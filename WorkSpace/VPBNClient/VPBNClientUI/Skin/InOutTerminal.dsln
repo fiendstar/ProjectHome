@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DirectUI>
+    <SlnInfo Name="InOutTerminal" Author="" Company="" CreateDate="" Path="C:\Documents and Settings\Administrator\桌面\Skin\InOutTerminal.dsln" />
+    <Dui>
+        <GuidCDEB67EF91EC4F898D1BC6514F48DC56 DuiName="InOutTerminal" DuiPath="C:\Documents and Settings\Administrator\桌面\Skin\InOutTerminal.dui">
+            <Guid1AD69B7835734D349EA1FB6ED5FC884E SknName="InOutTerminal" SknPath="C:\Documents and Settings\Administrator\桌面\Skin\InOutTerminal.skn" />
+        </GuidCDEB67EF91EC4F898D1BC6514F48DC56>
+    </Dui>
+</DirectUI>

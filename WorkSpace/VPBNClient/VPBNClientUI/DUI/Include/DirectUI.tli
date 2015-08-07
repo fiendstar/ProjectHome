@@ -1,0 +1,5533 @@
+#pragma once
+inline tstring  IDUIObj::GetName()
+{
+	BSTR _result = NULL;
+	raw_GetName(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIObj::SetName(tstring  strName  )
+{
+	_bstr_t xxx_strName(strName.c_str());
+
+	raw_SetName(xxx_strName  );
+}
+
+inline void IDUIObj::SetObjPtr(OLE_HANDLE  pObjPtr  )
+{
+
+	raw_SetObjPtr(pObjPtr  );
+}
+
+inline OLE_HANDLE  IDUIObj::GetObjPtr()
+{
+	OLE_HANDLE  _result;
+	raw_GetObjPtr(&_result);
+	return _result;
+}
+
+inline tstring  IDUIObj::GetObjectID()
+{
+	BSTR _result = NULL;
+	raw_GetObjectID(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline BOOL  IDUIObj::AccessConfig(BOOL  bRead  )
+{
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessConfig(xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIRes * IDUIObj::GetDUIRes()
+{
+	struct IDUIRes * _result;
+	raw_GetDUIRes(&_result);
+	return _result;
+}
+
+inline void IDUIObj::SetDUIRes(struct IDUIRes * pResult  )
+{
+
+	raw_SetDUIRes(pResult  );
+}
+
+inline OLE_HANDLE  IDUIObj::GetXMLNode()
+{
+	OLE_HANDLE  _result;
+	raw_GetXMLNode(&_result);
+	return _result;
+}
+
+inline enum DUIObjType  IDUIObj::GetType()
+{
+	enum DUIObjType  _result;
+	raw_GetType(&_result);
+	return _result;
+}
+
+inline void IDUIObj::SetType(enum DUIObjType  objType  )
+{
+
+	raw_SetType(objType  );
+}
+
+inline tstring  IDUIObj::GetTypeName()
+{
+	BSTR _result = NULL;
+	raw_GetTypeName(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIObj::SetTypeName(tstring  strTypeName  )
+{
+	_bstr_t xxx_strTypeName(strTypeName.c_str());
+
+	raw_SetTypeName(xxx_strTypeName  );
+}
+
+inline void IDUIObj::SetModified(BOOL  bModified  )
+{
+	VARIANT_BOOL xxx_bModified = bModified ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetModified(xxx_bModified  );
+}
+
+inline BOOL  IDUIObj::IsModified()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsModified(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIXMLNode * IDUIObj::GetDUIXMLNodePtr()
+{
+	struct IDUIXMLNode * _result;
+	raw_GetDUIXMLNodePtr(&_result);
+	return _result;
+}
+
+inline long  IDUIObj::AddInterRef()
+{
+	long  _result;
+	raw_AddInterRef(&_result);
+	return _result;
+}
+
+inline long  IDUIObj::ReleaseInterRef()
+{
+	long  _result;
+	raw_ReleaseInterRef(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::OpenSkin(tstring  strSkinPath, tstring  strSknPath, BOOL  bSkinCtrls  )
+{
+_bstr_t xxx_strSkinPath(strSkinPath.c_str());
+_bstr_t xxx_strSknPath(strSknPath.c_str());
+	VARIANT_BOOL xxx_bSkinCtrls = bSkinCtrls ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_OpenSkin(xxx_strSkinPath, xxx_strSknPath, xxx_bSkinCtrls, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::CloseSkin()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CloseSkin(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline IDispatch * IDUIRes::CreateDirectUI(tstring  strName, OLE_HANDLE  hWndParent  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	IDispatch * _result;
+	raw_CreateDirectUI(xxx_strName, hWndParent, &_result);
+	return _result;
+}
+
+inline IDispatch * IDUIRes::GetDirectUIForm(tstring  strName  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	IDispatch * _result;
+	raw_GetDirectUIForm(xxx_strName, &_result);
+	return _result;
+}
+
+inline struct IDUIObj * IDUIRes::GetResObject(enum DUIObjType  eType, tstring  strName, struct ISkinObjResBase * pObjParent, BOOL  bDeep  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	VARIANT_BOOL xxx_bDeep = bDeep ? VARIANT_TRUE : VARIANT_FALSE;
+	struct IDUIObj * _result;
+	raw_GetResObject(eType, xxx_strName, pObjParent, xxx_bDeep, &_result);
+	return _result;
+}
+
+inline struct IDUIImageBase * IDUIRes::GetImageBaseFromFile(tstring  strFilePath  )
+{
+_bstr_t xxx_strFilePath(strFilePath.c_str());
+	struct IDUIImageBase * _result;
+	raw_GetImageBaseFromFile(xxx_strFilePath, &_result);
+	return _result;
+}
+
+inline struct IDUIEvents * IDUIRes::GetEventHandle()
+{
+	struct IDUIEvents * _result;
+	raw_GetEventHandle(&_result);
+	return _result;
+}
+
+inline struct IDUIObj * IDUIRes::GetComDispatch(OLE_HANDLE  pDUIObj  )
+{
+	struct IDUIObj * _result;
+	raw_GetComDispatch(pDUIObj, &_result);
+	return _result;
+}
+
+inline struct IDUIObj * IDUIRes::GetResObjectByGuid(enum DUIObjType  eType, tstring  strGuid  )
+{
+_bstr_t xxx_strGuid(strGuid.c_str());
+	struct IDUIObj * _result;
+	raw_GetResObjectByGuid(eType, xxx_strGuid, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::RemoveObject(OLE_HANDLE  pDUIObj, BOOL  bRelease  )
+{
+	VARIANT_BOOL xxx_bRelease = bRelease ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveObject(pDUIObj, xxx_bRelease, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AddScriptObjects(OLE_HANDLE  pScriptObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AddScriptObjects(pScriptObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::IsDesignStatus()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsDesignStatus(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  IDUIRes::DrawImageSection(struct SkinRect  rect, struct IDUIImageBase * pImageSection  )
+{
+	OLE_HANDLE  _result;
+	raw_DrawImageSection(rect, pImageSection, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIRes::DrawTextStyle(struct SkinRect  rect, tstring  strText, struct IDUITextStyle * pTextStyle  )
+{
+_bstr_t xxx_strText(strText.c_str());
+	OLE_HANDLE  _result;
+	raw_DrawTextStyle(rect, xxx_strText, pTextStyle, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::AccessAttribRect(OLE_HANDLE  pXmlEle, tstring  strAttribName, struct SkinRect * prcValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribRect(pXmlEle, xxx_strAttribName, prcValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AccessAttribSize(OLE_HANDLE  pXmlEle, tstring  strAttribName, struct SkinSize * psizeValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribSize(pXmlEle, xxx_strAttribName, psizeValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AccessAttribLong(OLE_HANDLE  pXmlEle, tstring  strAttribName, long * plValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribLong(pXmlEle, xxx_strAttribName, plValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AccessAttribFloat(OLE_HANDLE  pXmlEle, tstring  strAttribName, float * pfValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribFloat(pXmlEle, xxx_strAttribName, pfValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AccessAttribDouble(OLE_HANDLE  pXmlEle, tstring  strAttribName, double * pdValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribDouble(pXmlEle, xxx_strAttribName, pdValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AccessAttribBOOL(OLE_HANDLE  pXmlEle, tstring  strAttribName, VARIANT_BOOL * pbValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribBOOL(pXmlEle, xxx_strAttribName, pbValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AccessAttribString(OLE_HANDLE  pXmlEle, tstring  strAttribName, BSTR * pstrValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribString(pXmlEle, xxx_strAttribName, pstrValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AccessAttribColor(OLE_HANDLE  pXmlEle, tstring  strAttribName, OLE_COLOR * pclrValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribColor(pXmlEle, xxx_strAttribName, pclrValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::GradientFill(OLE_HANDLE  hDC, struct SkinRect  rect, OLE_COLOR  clrFrom, OLE_COLOR  clrTo, long  nIrotation  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_GradientFill(hDC, rect, clrFrom, clrTo, nIrotation, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIRes::SetDUIResObjPtr(OLE_HANDLE  lResObjPtr  )
+{
+
+	raw_SetDUIResObjPtr(lResObjPtr  );
+}
+
+inline OLE_HANDLE  IDUIRes::GetDUIResObjPtr()
+{
+	OLE_HANDLE  _result;
+	raw_GetDUIResObjPtr(&_result);
+	return _result;
+}
+
+inline long  IDUIRes::CreateDUIResObj()
+{
+	long  _result;
+	raw_CreateDUIResObj(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::CloseDUIResObj()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CloseDUIResObj(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIControlBase * IDUIRes::ImportSkin(OLE_HANDLE  hInstance, long  uResID, tstring  strResSec, OLE_HANDLE  hObjParent  )
+{
+_bstr_t xxx_strResSec(strResSec.c_str());
+	struct IDUIControlBase * _result;
+	raw_ImportSkin(hInstance, uResID, xxx_strResSec, hObjParent, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIRes::GetHwndPrintBmp(OLE_HANDLE  hDC, OLE_HANDLE  hWnd  )
+{
+	OLE_HANDLE  _result;
+	raw_GetHwndPrintBmp(hDC, hWnd, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::DrawSkinImage(OLE_HANDLE  hDC, struct SkinRect  rect, struct IDUIImageBase * pImageBase  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawSkinImage(hDC, rect, pImageBase, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIRes::EnumObjectsToHwnd(enum DUIObjType  objType, long  nMsg, OLE_HANDLE  hWndMsg  )
+{
+
+	raw_EnumObjectsToHwnd(objType, nMsg, hWndMsg  );
+}
+
+inline void IDUIRes::EnumObjectsToCallback(enum DUIObjType  objType, OLE_HANDLE  pFunCallback, OLE_HANDLE  nParam  )
+{
+
+	raw_EnumObjectsToCallback(objType, pFunCallback, nParam  );
+}
+
+inline struct IDUIObj * IDUIRes::AddResObject(enum DUIObjType  objType, struct IDUIObj * pOwnerObj, tstring  strName, BOOL  bInsertFirst  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	VARIANT_BOOL xxx_bInsertFirst = bInsertFirst ? VARIANT_TRUE : VARIANT_FALSE;
+	struct IDUIObj * _result;
+	raw_AddResObject(objType, pOwnerObj, xxx_strName, xxx_bInsertFirst, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::DeleteResObj(struct IDUIObj * pObj  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DeleteResObj(pObj, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::RemoveResObject(struct IDUIObj * pObj  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveResObject(pObj, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  IDUIRes::GetRgnFromHBitmap(OLE_HANDLE  hBitmap, OLE_COLOR  clrTrans  )
+{
+	OLE_HANDLE  _result;
+	raw_GetRgnFromHBitmap(hBitmap, clrTrans, &_result);
+	return _result;
+}
+
+inline struct IDUIControlBase * IDUIRes::AddPluginResObject(struct IDUIObj * pOwnerObj, tstring  strName, tstring  strGuid  )
+{
+_bstr_t xxx_strName(strName.c_str());
+_bstr_t xxx_strGuid(strGuid.c_str());
+	struct IDUIControlBase * _result;
+	raw_AddPluginResObject(pOwnerObj, xxx_strName, xxx_strGuid, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::DrawIcon(OLE_HANDLE  hDC, short  xLeft, short  yTop, short  cxWidth, short  cyHeight, OLE_HANDLE  hIcon  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawIcon(hDC, xLeft, yTop, cxWidth, cyHeight, hIcon, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline enum DUIObjType  IDUIRes::ConvertINameToType(tstring  bstrInterfaceName  )
+{
+_bstr_t xxx_bstrInterfaceName(bstrInterfaceName.c_str());
+	enum DUIObjType  _result;
+	raw_ConvertINameToType(xxx_bstrInterfaceName, &_result);
+	return _result;
+}
+
+inline tstring  IDUIRes::ConvertTypeToIName(enum DUIObjType  eType  )
+{
+	BSTR _result = NULL;
+	raw_ConvertTypeToIName(eType, &_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline BOOL  IDUIRes::Save(tstring  bstrPath  )
+{
+_bstr_t xxx_bstrPath(bstrPath.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Save(xxx_bstrPath, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::SetDesignStatus(BOOL  bDesign  )
+{
+	VARIANT_BOOL xxx_bDesign = bDesign ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_SetDesignStatus(xxx_bDesign, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline tstring  IDUIRes::GetSkinFilePath()
+{
+	BSTR _result = NULL;
+	raw_GetSkinFilePath(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIRes::SetDynClearZipInfo(BOOL  bClear  )
+{
+	VARIANT_BOOL xxx_bClear = bClear ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetDynClearZipInfo(xxx_bClear  );
+}
+
+inline BOOL  IDUIRes::IsDynClearZipInfo()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsDynClearZipInfo(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::IsPerpixelDraw()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsPerpixelDraw(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIImageList * IDUIRes::GetImageListFromHIMAGELIST(OLE_HANDLE  hImageList  )
+{
+	struct IDUIImageList * _result;
+	raw_GetImageListFromHIMAGELIST(hImageList, &_result);
+	return _result;
+}
+
+inline struct IDUIImageList * IDUIRes::GetImageListFromImageBase(struct IDUIImageBase * pImageBase, short  cx, OLE_COLOR  crMask  )
+{
+	struct IDUIImageList * _result;
+	raw_GetImageListFromImageBase(pImageBase, cx, crMask, &_result);
+	return _result;
+}
+
+inline struct IDUIImageList * IDUIRes::GetImageListFromFile(tstring  strFilePath, short  cx, OLE_COLOR  crMask  )
+{
+_bstr_t xxx_strFilePath(strFilePath.c_str());
+	struct IDUIImageList * _result;
+	raw_GetImageListFromFile(xxx_strFilePath, cx, crMask, &_result);
+	return _result;
+}
+
+inline void IDUIRes::ReleasePluginResObject(struct IDUIControlBase * pPlugin  )
+{
+
+	raw_ReleasePluginResObject(pPlugin  );
+}
+
+inline struct IDUIControlBase * IDUIRes::CreatePluginResObject(tstring  strGuid  )
+{
+_bstr_t xxx_strGuid(strGuid.c_str());
+	struct IDUIControlBase * _result;
+	raw_CreatePluginResObject(xxx_strGuid, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::IsRegKbHookObj(struct IDUIControlBase * pObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsRegKbHookObj(pObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::RegisterKbHookObj(struct IDUIControlBase * pObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RegisterKbHookObj(pObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::UnRegisterKbHookObj(struct IDUIControlBase * pObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_UnRegisterKbHookObj(pObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline long  IDUIRes::CallNextKBHook(long  nCode, OLE_HANDLE  wParam, OLE_HANDLE  lParam  )
+{
+	long  _result;
+	raw_CallNextKBHook(nCode, wParam, lParam, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::IsRegisterHookObject(enum DUI_HOOKTYPE  dwHookType, struct IDUIControlBase * pObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsRegisterHookObject(dwHookType, pObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::RegisterHookObject(enum DUI_HOOKTYPE  dwHookType, struct IDUIControlBase * pObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RegisterHookObject(dwHookType, pObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::UnRegisterHookObject(enum DUI_HOOKTYPE  dwHookType, struct IDUIControlBase * pObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_UnRegisterHookObject(dwHookType, pObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::StartHook()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_StartHook(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::EndHook()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_EndHook(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIObj * IDUIRes::GetObjectFromLong(OLE_HANDLE  nObject  )
+{
+	struct IDUIObj * _result;
+	raw_GetObjectFromLong(nObject, &_result);
+	return _result;
+}
+
+inline struct IDUIWindow * IDUIRes::GetDUIWindow()
+{
+	struct IDUIWindow * _result;
+	raw_GetDUIWindow(&_result);
+	return _result;
+}
+
+inline void IDUIRes::ChangeSkn(tstring  strSkinPath, VARIANT_BOOL * pbResult  )
+{
+	_bstr_t xxx_strSkinPath(strSkinPath.c_str());
+
+	raw_ChangeSkn(xxx_strSkinPath, pbResult  );
+}
+
+inline void IDUIRes::OpenTheme(tstring  strSkinPath, VARIANT_BOOL * pbResult  )
+{
+	_bstr_t xxx_strSkinPath(strSkinPath.c_str());
+
+	raw_OpenTheme(xxx_strSkinPath, pbResult  );
+}
+
+inline void IDUIRes::ExportSknDuiFile(tstring  strSkinPath, VARIANT_BOOL * pbResult  )
+{
+	_bstr_t xxx_strSkinPath(strSkinPath.c_str());
+
+	raw_ExportSknDuiFile(xxx_strSkinPath, pbResult  );
+}
+
+inline struct IDUIControlBase * IDUIRes::AddPluginResObject2(struct IDUIObj * pOwnerObj, tstring  strName, tstring  strGuid, BOOL  bIsComposeCtrl  )
+{
+_bstr_t xxx_strName(strName.c_str());
+_bstr_t xxx_strGuid(strGuid.c_str());
+	VARIANT_BOOL xxx_bIsComposeCtrl = bIsComposeCtrl ? VARIANT_TRUE : VARIANT_FALSE;
+	struct IDUIControlBase * _result;
+	raw_AddPluginResObject2(pOwnerObj, xxx_strName, xxx_strGuid, xxx_bIsComposeCtrl, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIRes::AccessAttribString2(tstring  strAttribName, BSTR * pstrValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribString2(xxx_strAttribName, pstrValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIRes::AddStrProp(tstring  strKey, tstring  strValue, OLE_HANDLE  pStrProp  )
+{
+	_bstr_t xxx_strKey(strKey.c_str());
+	_bstr_t xxx_strValue(strValue.c_str());
+
+	raw_AddStrProp(xxx_strKey, xxx_strValue, pStrProp  );
+}
+
+inline void IDUIRes::RemoveStrProp(tstring  strKey, OLE_HANDLE  pStrProp  )
+{
+	_bstr_t xxx_strKey(strKey.c_str());
+
+	raw_RemoveStrProp(xxx_strKey, pStrProp  );
+}
+
+inline void IDUIRes::ChangeLanguage(enum DUI_LANGUAGE  eLang  )
+{
+
+	raw_ChangeLanguage(eLang  );
+}
+
+inline long  IDUIRes::GetCurAllLang(enum DUI_LANGUAGE * peLang, long  eLangSize  )
+{
+	long  _result;
+	raw_GetCurAllLang(peLang, eLangSize, &_result);
+	return _result;
+}
+
+inline void IDUIRes::GenerateLanguageXML(tstring  strXMLPath  )
+{
+	_bstr_t xxx_strXMLPath(strXMLPath.c_str());
+
+	raw_GenerateLanguageXML(xxx_strXMLPath  );
+}
+
+inline void IDUIRes::GetCurLanguage(enum DUI_LANGUAGE * peLang  )
+{
+
+	raw_GetCurLanguage(peLang  );
+}
+
+inline void IDUIRes::SetUseSkin(enum SKINCTRL_CLASSTYPE  eClassType, BOOL  bUseSkin  )
+{
+	VARIANT_BOOL xxx_bUseSkin = bUseSkin ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetUseSkin(eClassType, xxx_bUseSkin  );
+}
+
+inline BOOL  IDUIRes::IsUseSkin(enum SKINCTRL_CLASSTYPE  eClassType  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsUseSkin(eClassType, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIRes::SetSkinHwnd(OLE_HANDLE  hWnd, BOOL  bChildSkin  )
+{
+	VARIANT_BOOL xxx_bChildSkin = bChildSkin ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetSkinHwnd(hWnd, xxx_bChildSkin  );
+}
+
+inline void IDUIRes::SetNoSkinHwnd(OLE_HANDLE  hWnd, BOOL  bChildNoSkin  )
+{
+	VARIANT_BOOL xxx_bChildNoSkin = bChildNoSkin ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetNoSkinHwnd(hWnd, xxx_bChildNoSkin  );
+}
+
+inline BOOL  IDUIRes::IsNoSkinHwnd(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsNoSkinHwnd(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AddColorFilterColorize(short  nHue, short  nSaturation, short  nBlend  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AddColorFilterColorize(nHue, nSaturation, nBlend, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::AddColorFilterShiftRGB(short  nRed, short  nGreen, short  nBlue  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AddColorFilterShiftRGB(nRed, nGreen, nBlue, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::RemoveColorFilters()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveColorFilters(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIRes::RedrawAllControls()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RedrawAllControls(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIRes::GetVersion(long * mainVersion, long * subVerson  )
+{
+
+	raw_GetVersion(mainVersion, subVerson  );
+}
+
+inline void IDUIRes::GetSkinVersion(long * mainVersion, long * subVerson  )
+{
+
+	raw_GetSkinVersion(mainVersion, subVerson  );
+}
+
+inline void IDUIRes::SetDragInfo(struct DUI_DRAGINFO  info  )
+{
+
+	raw_SetDragInfo(info  );
+}
+
+inline struct DUI_DRAGINFO  IDUIRes::GetDragInfo()
+{
+	struct DUI_DRAGINFO  _result;
+	raw_GetDragInfo(&_result);
+	return _result;
+}
+
+inline void IDUIRes::SetDrag(BOOL  bDrag  )
+{
+	VARIANT_BOOL xxx_bDrag = bDrag ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetDrag(xxx_bDrag  );
+}
+
+inline BOOL  IDUIRes::GetDrag()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_GetDrag(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIRes::SetAutoUseSkin(BOOL  bAutoSkin  )
+{
+	VARIANT_BOOL xxx_bAutoSkin = bAutoSkin ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetAutoUseSkin(xxx_bAutoSkin  );
+}
+
+inline BOOL  IDUIRes::CallScripEvent(tstring  strGuid, long  nMsgID, OLE_HANDLE  wParam, OLE_HANDLE  lParam, long  nDUIMsgId  )
+{
+_bstr_t xxx_strGuid(strGuid.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CallScripEvent(xxx_strGuid, nMsgID, wParam, lParam, nDUIMsgId, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline tstring  IDUIRes::GetString(enum DUI_LANGUAGE  eLang, tstring  strKey  )
+{
+_bstr_t xxx_strKey(strKey.c_str());
+	BSTR _result = NULL;
+	raw_GetString(eLang, xxx_strKey, &_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline OLE_HANDLE  IDUIRes::ShowDirectUIWnd(tstring  strText  )
+{
+_bstr_t xxx_strText(strText.c_str());
+	OLE_HANDLE  _result;
+	raw_ShowDirectUIWnd(xxx_strText, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIRes::CreateDUIWindow(tstring  strText, OLE_HANDLE  hWndParent, long  dwSdyle  )
+{
+_bstr_t xxx_strText(strText.c_str());
+	OLE_HANDLE  _result;
+	raw_CreateDUIWindow(xxx_strText, hWndParent, dwSdyle, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIRes::CreateEdit(tstring  strText, OLE_HANDLE  hWndParent, long  dwSdyle, long  x, long  y, long  cx, long  cy  )
+{
+_bstr_t xxx_strText(strText.c_str());
+	OLE_HANDLE  _result;
+	raw_CreateEdit(xxx_strText, hWndParent, dwSdyle, x, y, cx, cy, &_result);
+	return _result;
+}
+
+inline struct IDUIObj * IDUIRes::GetGlobalResObj(enum DUIObjType  eType, tstring  strName  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	struct IDUIObj * _result;
+	raw_GetGlobalResObj(eType, xxx_strName, &_result);
+	return _result;
+}
+
+inline BOOL  ISkinObjResBase::IsEnable()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsEnable(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::EnableObject(BOOL  bEnable, BOOL  bRedraw  )
+{
+	VARIANT_BOOL xxx_bEnable = bEnable ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL xxx_bRedraw = bRedraw ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_EnableObject(xxx_bEnable, xxx_bRedraw, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ISkinObjResBase::SetVisible(BOOL  bVisible, BOOL  bRefresh, BOOL  bAnimate  )
+{
+	VARIANT_BOOL xxx_bVisible = bVisible ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL xxx_bRefresh = bRefresh ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL xxx_bAnimate = bAnimate ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetVisible(xxx_bVisible, xxx_bRefresh, xxx_bAnimate  );
+}
+
+inline struct ISkinObjResBase * ISkinObjResBase::GetParent()
+{
+	struct ISkinObjResBase * _result;
+	raw_GetParent(&_result);
+	return _result;
+}
+
+inline void ISkinObjResBase::SetParent(struct ISkinObjResBase * pObjParent  )
+{
+
+	raw_SetParent(pObjParent  );
+}
+
+inline struct ISkinObjResBase * ISkinObjResBase::GetRoot()
+{
+	struct ISkinObjResBase * _result;
+	raw_GetRoot(&_result);
+	return _result;
+}
+
+inline BOOL  ISkinObjResBase::IsExisted(struct ISkinObjResBase * pObj  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsExisted(pObj, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::AddSubObject(struct ISkinObjResBase * pSubObj, BOOL  bInsertFirst  )
+{
+	VARIANT_BOOL xxx_bInsertFirst = bInsertFirst ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AddSubObject(pSubObj, xxx_bInsertFirst, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::MoveAhead(struct ISkinObjResBase * pSubObj  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_MoveAhead(pSubObj, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::MoveBack(struct ISkinObjResBase * pSubObj  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_MoveBack(pSubObj, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::Remove()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Remove(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct ISkinObjResBase * ISkinObjResBase::GetSubObject(short  nIndex  )
+{
+	struct ISkinObjResBase * _result;
+	raw_GetSubObject(nIndex, &_result);
+	return _result;
+}
+
+inline void ISkinObjResBase::RemoveAllSubObjects()
+{
+
+	raw_RemoveAllSubObjects();
+}
+
+inline short  ISkinObjResBase::GetSubObjIndex(struct ISkinObjResBase * pSubObj  )
+{
+	short  _result;
+	raw_GetSubObjIndex(pSubObj, &_result);
+	return _result;
+}
+
+inline short  ISkinObjResBase::GetChildCount()
+{
+	short  _result;
+	raw_GetChildCount(&_result);
+	return _result;
+}
+
+inline struct ISkinObjResBase * ISkinObjResBase::GetSubCaptionObject(tstring  strCaption, short * pnIndex  )
+{
+_bstr_t xxx_strCaption(strCaption.c_str());
+	struct ISkinObjResBase * _result;
+	raw_GetSubCaptionObject(xxx_strCaption, pnIndex, &_result);
+	return _result;
+}
+
+inline struct ISkinObjResBase * ISkinObjResBase::GetSubResObject(struct ISkinObjResBase * pObj, short * pnIndex  )
+{
+	struct ISkinObjResBase * _result;
+	raw_GetSubResObject(pObj, pnIndex, &_result);
+	return _result;
+}
+
+inline struct ISkinObjResBase * ISkinObjResBase::GetObjectByCaption(long  lType, tstring  strName, BOOL  bDeep  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	VARIANT_BOOL xxx_bDeep = bDeep ? VARIANT_TRUE : VARIANT_FALSE;
+	struct ISkinObjResBase * _result;
+	raw_GetObjectByCaption(lType, xxx_strName, xxx_bDeep, &_result);
+	return _result;
+}
+
+inline void ISkinObjResBase::DelAllSubObjects()
+{
+
+	raw_DelAllSubObjects();
+}
+
+inline void ISkinObjResBase::SetPosition(struct IDUIPos * pObjPos  )
+{
+
+	raw_SetPosition(pObjPos  );
+}
+
+inline void ISkinObjResBase::ResizeThis()
+{
+
+	raw_ResizeThis();
+}
+
+inline void ISkinObjResBase::Center()
+{
+
+	raw_Center();
+}
+
+inline BOOL  ISkinObjResBase::RemoveSubObject(struct ISkinObjResBase * pSubObj  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveSubObject(pSubObj, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline short  ISkinObjResBase::InsertSubObject(struct ISkinObjResBase * pSubObj, short  nIndex  )
+{
+	short  _result;
+	raw_InsertSubObject(pSubObj, nIndex, &_result);
+	return _result;
+}
+
+inline BOOL  ISkinObjResBase::RedrawWindow(BOOL  bUpdateNow  )
+{
+	VARIANT_BOOL xxx_bUpdateNow = bUpdateNow ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RedrawWindow(xxx_bUpdateNow, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ISkinObjResBase::DirectDraw(BOOL  bDestroyBmp  )
+{
+	VARIANT_BOOL xxx_bDestroyBmp = bDestroyBmp ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_DirectDraw(xxx_bDestroyBmp  );
+}
+
+inline IDispatch * ISkinObjResBase::GetDirectUI()
+{
+	IDispatch * _result;
+	raw_GetDirectUI(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  ISkinObjResBase::GetWindow()
+{
+	OLE_HANDLE  _result;
+	raw_GetWindow(&_result);
+	return _result;
+}
+
+inline void ISkinObjResBase::SetOwnerHwnd(OLE_HANDLE  lhWnd  )
+{
+
+	raw_SetOwnerHwnd(lhWnd  );
+}
+
+inline void ISkinObjResBase::SetDirectUIHwnd(OLE_HANDLE  lhWnd  )
+{
+
+	raw_SetDirectUIHwnd(lhWnd  );
+}
+
+inline struct IDUIRect * ISkinObjResBase::GetRect()
+{
+	struct IDUIRect * _result;
+	raw_GetRect(&_result);
+	return _result;
+}
+
+inline enum DUIDockObjType  ISkinObjResBase::GetDockType()
+{
+	enum DUIDockObjType  _result;
+	raw_GetDockType(&_result);
+	return _result;
+}
+
+inline void ISkinObjResBase::Dock(enum DUIDockObjType  ntype, BOOL  bFull  )
+{
+	VARIANT_BOOL xxx_bFull = bFull ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_Dock(ntype, xxx_bFull  );
+}
+
+inline void ISkinObjResBase::SetRect(struct IDUIRect * pRect  )
+{
+
+	raw_SetRect(pRect  );
+}
+
+inline long  ISkinObjResBase::Resize(struct SkinRect * pRect  )
+{
+	long  _result;
+	raw_Resize(pRect, &_result);
+	return _result;
+}
+
+inline struct IDUIPos * ISkinObjResBase::GetPosition()
+{
+	struct IDUIPos * _result;
+	raw_GetPosition(&_result);
+	return _result;
+}
+
+inline BOOL  ISkinObjResBase::IsLButtonDowned()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsLButtonDowned(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ISkinObjResBase::SetLButtonDowned(BOOL  bValue  )
+{
+	VARIANT_BOOL xxx_bValue = bValue ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetLButtonDowned(xxx_bValue  );
+}
+
+inline BOOL  ISkinObjResBase::IsMouseMove()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsMouseMove(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ISkinObjResBase::SetMouseMove(BOOL  bValue  )
+{
+	VARIANT_BOOL xxx_bValue = bValue ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetMouseMove(xxx_bValue  );
+}
+
+inline BOOL  ISkinObjResBase::IsVisible()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsVisible(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ISkinObjResBase::SetOpacity(short  nOpacity  )
+{
+
+	raw_SetOpacity(nOpacity  );
+}
+
+inline short  ISkinObjResBase::GetOpacity()
+{
+	short  _result;
+	raw_GetOpacity(&_result);
+	return _result;
+}
+
+inline void ISkinObjResBase::SetBlendWithParent(BOOL  bBlend  )
+{
+	VARIANT_BOOL xxx_bBlend = bBlend ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetBlendWithParent(xxx_bBlend  );
+}
+
+inline BOOL  ISkinObjResBase::IsBlendWithParent()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsBlendWithParent(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct ILayerGraphics * ISkinObjResBase::GetLayerBack(struct SkinRect  rect  )
+{
+	struct ILayerGraphics * _result;
+	raw_GetLayerBack(rect, &_result);
+	return _result;
+}
+
+inline struct ILayerGraphics * ISkinObjResBase::GetLayerFore(struct SkinRect  rect  )
+{
+	struct ILayerGraphics * _result;
+	raw_GetLayerFore(rect, &_result);
+	return _result;
+}
+
+inline struct ILayerGraphics * ISkinObjResBase::GetLayerMe()
+{
+	struct ILayerGraphics * _result;
+	raw_GetLayerMe(&_result);
+	return _result;
+}
+
+inline BOOL  ISkinObjResBase::IsSizing()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsSizing(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct ILayerGraphics * ISkinObjResBase::GetDirectUILayerCache()
+{
+	struct ILayerGraphics * _result;
+	raw_GetDirectUILayerCache(&_result);
+	return _result;
+}
+
+inline BOOL  ISkinObjResBase::UpdateDirectUILayerCache(struct SkinRect  rcDest, OLE_HANDLE  hDC, struct SkinRect  rcSource  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_UpdateDirectUILayerCache(rcDest, hDC, rcSource, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::DrawCurrentLayer(OLE_HANDLE  hDC, BOOL  bDrawChildren, struct SkinRect  rcUpdate, BOOL  bMemDC  )
+{
+	VARIANT_BOOL xxx_bDrawChildren = bDrawChildren ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL xxx_bMemDC = bMemDC ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawCurrentLayer(hDC, xxx_bDrawChildren, rcUpdate, xxx_bMemDC, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::MoveTop(struct ISkinObjResBase * pSubObj  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_MoveTop(pSubObj, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::DrawSprite(OLE_HANDLE  hDCDest, struct SkinRect  rcDest, struct SkinRect  rcUpdateObject, OLE_HANDLE  hFuncDrawBack, OLE_HANDLE  pCallClassPtr, BOOL  bUpdateCache  )
+{
+	VARIANT_BOOL xxx_bUpdateCache = bUpdateCache ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawSprite(hDCDest, rcDest, rcUpdateObject, hFuncDrawBack, pCallClassPtr, xxx_bUpdateCache, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::DrawBlindObject(OLE_HANDLE  hDCDest, struct SkinRect  rcDest, struct SkinRect  rcUpdateObject, short  nIndexStart, short  nIndexEnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawBlindObject(hDCDest, rcDest, rcUpdateObject, nIndexStart, nIndexEnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinObjResBase::DestroyRgnInfo()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DestroyRgnInfo(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ISkinObjResBase::EnableRedraw(BOOL  bSetRedraw  )
+{
+	VARIANT_BOOL xxx_bSetRedraw = bSetRedraw ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_EnableRedraw(xxx_bSetRedraw  );
+}
+
+inline BOOL  ISkinObjResBase::IsEnableRedraw()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsEnableRedraw(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ISkinObjResBase::SetAvailRect(struct IDUIRect * pRect  )
+{
+
+	raw_SetAvailRect(pRect  );
+}
+
+inline struct IDUIRect * ISkinObjResBase::GetAvailRect()
+{
+	struct IDUIRect * _result;
+	raw_GetAvailRect(&_result);
+	return _result;
+}
+
+inline void ISkinObjResBase::CallEvent(long  nMsgID, OLE_HANDLE  wParam, OLE_HANDLE  lParam  )
+{
+
+	raw_CallEvent(nMsgID, wParam, lParam  );
+}
+
+inline void ISkinObjResBase::SetUserData(OLE_HANDLE  hData  )
+{
+
+	raw_SetUserData(hData  );
+}
+
+inline OLE_HANDLE  ISkinObjResBase::GetUserData()
+{
+	OLE_HANDLE  _result;
+	raw_GetUserData(&_result);
+	return _result;
+}
+
+	inline enum PosHorzAlignType  IDUIPos::get_nHorzAlignType()
+	{
+		enum PosHorzAlignType _result;
+		HRESULT _hr = raw_get_nHorzAlignType(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_nHorzAlignType(enum PosHorzAlignType  pVal)
+	{
+		HRESULT _hr = raw_put_nHorzAlignType(pVal);
+	}
+
+	inline enum PosVertAlignType  IDUIPos::get_nVertAlignType()
+	{
+		enum PosVertAlignType _result;
+		HRESULT _hr = raw_get_nVertAlignType(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_nVertAlignType(enum PosVertAlignType  pVal)
+	{
+		HRESULT _hr = raw_put_nVertAlignType(pVal);
+	}
+
+	inline enum PosHorzSpaceType  IDUIPos::get_nHorzSpaceType()
+	{
+		enum PosHorzSpaceType _result;
+		HRESULT _hr = raw_get_nHorzSpaceType(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_nHorzSpaceType(enum PosHorzSpaceType  pVal)
+	{
+		HRESULT _hr = raw_put_nHorzSpaceType(pVal);
+	}
+
+	inline enum PosVertSpaceType  IDUIPos::get_nVertSpaceType()
+	{
+		enum PosVertSpaceType _result;
+		HRESULT _hr = raw_get_nVertSpaceType(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_nVertSpaceType(enum PosVertSpaceType  pVal)
+	{
+		HRESULT _hr = raw_put_nVertSpaceType(pVal);
+	}
+
+	inline long  IDUIPos::get_left()
+	{
+		long _result;
+		HRESULT _hr = raw_get_left(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_left(long  pVal)
+	{
+		HRESULT _hr = raw_put_left(pVal);
+	}
+
+	inline long  IDUIPos::get_top()
+	{
+		long _result;
+		HRESULT _hr = raw_get_top(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_top(long  pVal)
+	{
+		HRESULT _hr = raw_put_top(pVal);
+	}
+
+	inline long  IDUIPos::get_right()
+	{
+		long _result;
+		HRESULT _hr = raw_get_right(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_right(long  pVal)
+	{
+		HRESULT _hr = raw_put_right(pVal);
+	}
+
+	inline long  IDUIPos::get_bottom()
+	{
+		long _result;
+		HRESULT _hr = raw_get_bottom(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_bottom(long  pVal)
+	{
+		HRESULT _hr = raw_put_bottom(pVal);
+	}
+
+	inline long  IDUIPos::get_width()
+	{
+		long _result;
+		HRESULT _hr = raw_get_width(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_width(long  pVal)
+	{
+		HRESULT _hr = raw_put_width(pVal);
+	}
+
+	inline long  IDUIPos::get_height()
+	{
+		long _result;
+		HRESULT _hr = raw_get_height(&_result);
+		return _result;
+	}
+
+	inline void IDUIPos::put_height(long  pVal)
+	{
+		HRESULT _hr = raw_put_height(pVal);
+	}
+
+inline struct DUIPosition  IDUIPos::GetPosStruct()
+{
+	struct DUIPosition  _result;
+	raw_GetPosStruct(&_result);
+	return _result;
+}
+
+inline void IDUIPos::SetPosStruct(struct DUIPosition  pos  )
+{
+
+	raw_SetPosStruct(pos  );
+}
+
+	inline long  IDUIRect::get_left()
+	{
+		long _result;
+		HRESULT _hr = raw_get_left(&_result);
+		return _result;
+	}
+
+	inline void IDUIRect::put_left(long  pVal)
+	{
+		HRESULT _hr = raw_put_left(pVal);
+	}
+
+	inline long  IDUIRect::get_right()
+	{
+		long _result;
+		HRESULT _hr = raw_get_right(&_result);
+		return _result;
+	}
+
+	inline void IDUIRect::put_right(long  pVal)
+	{
+		HRESULT _hr = raw_put_right(pVal);
+	}
+
+	inline long  IDUIRect::get_top()
+	{
+		long _result;
+		HRESULT _hr = raw_get_top(&_result);
+		return _result;
+	}
+
+	inline void IDUIRect::put_top(long  pVal)
+	{
+		HRESULT _hr = raw_put_top(pVal);
+	}
+
+	inline long  IDUIRect::get_bottom()
+	{
+		long _result;
+		HRESULT _hr = raw_get_bottom(&_result);
+		return _result;
+	}
+
+	inline void IDUIRect::put_bottom(long  pVal)
+	{
+		HRESULT _hr = raw_put_bottom(pVal);
+	}
+
+inline long  IDUIRect::GetWidth()
+{
+	long  _result;
+	raw_GetWidth(&_result);
+	return _result;
+}
+
+inline long  IDUIRect::GetHeight()
+{
+	long  _result;
+	raw_GetHeight(&_result);
+	return _result;
+}
+
+inline void IDUIRect::SetRectStruct(struct SkinRect  sknrc  )
+{
+
+	raw_SetRectStruct(sknrc  );
+}
+
+inline struct SkinRect  IDUIRect::GetRectStruct()
+{
+	struct SkinRect  _result;
+	raw_GetRectStruct(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  ILayerGraphics::GetDC()
+{
+	OLE_HANDLE  _result;
+	raw_GetDC(&_result);
+	return _result;
+}
+
+inline void ILayerGraphics::Destroy()
+{
+
+	raw_Destroy();
+}
+
+inline void ILayerGraphics::Clear(struct SkinRect  sknrc  )
+{
+
+	raw_Clear(sknrc  );
+}
+
+inline struct SkinRect  ILayerGraphics::GetRect()
+{
+	struct SkinRect  _result;
+	raw_GetRect(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  ILayerGraphics::GetBits()
+{
+	OLE_HANDLE  _result;
+	raw_GetBits(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  ILayerGraphics::GetBitmap()
+{
+	OLE_HANDLE  _result;
+	raw_GetBitmap(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  ILayerGraphics::GetOldBitmap()
+{
+	OLE_HANDLE  _result;
+	raw_GetOldBitmap(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  ILayerGraphics::GetBmpInfo()
+{
+	OLE_HANDLE  _result;
+	raw_GetBmpInfo(&_result);
+	return _result;
+}
+
+inline void ILayerGraphics::SetLayerBmp(OLE_HANDLE  pLayerBmp  )
+{
+
+	raw_SetLayerBmp(pLayerBmp  );
+}
+
+inline OLE_HANDLE  ILayerGraphics::GetLayerBmp()
+{
+	OLE_HANDLE  _result;
+	raw_GetLayerBmp(&_result);
+	return _result;
+}
+
+	inline struct IDUIPicture * IDUIImageBase::get_ImageObj()
+	{
+		struct IDUIPicture *_result;
+		HRESULT _hr = raw_get_ImageObj(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_ImageObj(struct IDUIPicture * pVal)
+	{
+		HRESULT _hr = raw_put_ImageObj(pVal);
+	}
+
+	inline struct SkinRect  IDUIImageBase::get_rect()
+	{
+		struct SkinRect _result;
+		HRESULT _hr = raw_get_rect(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_rect(struct SkinRect * pVal)
+	{
+		HRESULT _hr = raw_put_rect(pVal);
+	}
+
+	inline struct SkinRect  IDUIImageBase::get_rcBorder()
+	{
+		struct SkinRect _result;
+		HRESULT _hr = raw_get_rcBorder(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_rcBorder(struct SkinRect  pVal)
+	{
+		HRESULT _hr = raw_put_rcBorder(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageBase::get_bLeftEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bLeftEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_bLeftEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bLeftEdgeStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageBase::get_bRightEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bRightEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_bRightEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bRightEdgeStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageBase::get_bTopEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bTopEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_bTopEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bTopEdgeStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageBase::get_bBottomEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bBottomEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_bBottomEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bBottomEdgeStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageBase::get_bClientAreaStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bClientAreaStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_bClientAreaStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bClientAreaStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageBase::get_bTransparent()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bTransparent(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_bTransparent(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bTransparent(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageBase::get_bSupportPerPixel()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bSupportPerPixel(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_bSupportPerPixel(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bSupportPerPixel(pVal);
+	}
+
+	inline OLE_COLOR  IDUIImageBase::get_clrTrans()
+	{
+		OLE_COLOR _result;
+		HRESULT _hr = raw_get_clrTrans(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_clrTrans(OLE_COLOR  pVal)
+	{
+		HRESULT _hr = raw_put_clrTrans(pVal);
+	}
+
+	inline OLE_COLOR  IDUIImageBase::get_clrColorize()
+	{
+		OLE_COLOR _result;
+		HRESULT _hr = raw_get_clrColorize(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_clrColorize(OLE_COLOR  pVal)
+	{
+		HRESULT _hr = raw_put_clrColorize(pVal);
+	}
+
+	inline short  IDUIImageBase::get_nOpacity()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nOpacity(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageBase::put_nOpacity(short  pVal)
+	{
+		HRESULT _hr = raw_put_nOpacity(pVal);
+	}
+
+inline void IDUIImageBase::StretchAll(BOOL  bStretch  )
+{
+	VARIANT_BOOL xxx_bStretch = bStretch ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_StretchAll(xxx_bStretch  );
+}
+
+inline BOOL  IDUIImageBase::Draw(OLE_HANDLE  hDC, struct SkinRect  rect  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Draw(hDC, rect, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIImageBase::BuildPerPixImage()
+{
+
+	raw_BuildPerPixImage();
+}
+
+inline long  IDUIImageBase::GetWidth()
+{
+	long  _result;
+	raw_GetWidth(&_result);
+	return _result;
+}
+
+inline long  IDUIImageBase::GetHeight()
+{
+	long  _result;
+	raw_GetHeight(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIImageBase::CreateImageSection(tstring  strSectionName, OLE_HANDLE  pDUIRes  )
+{
+_bstr_t xxx_strSectionName(strSectionName.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CreateImageSection(xxx_strSectionName, pDUIRes, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct SkinImageSection  IDUIImageBase::GetImageSection()
+{
+	struct SkinImageSection  _result;
+	raw_GetImageSection(&_result);
+	return _result;
+}
+
+inline void IDUIImageBase::SetImageSection(struct SkinImageSection * pImgSection  )
+{
+
+	raw_SetImageSection(pImgSection  );
+}
+
+inline OLE_HANDLE  IDUIImageBase::GetHBitmap(struct SkinRect  rect, OLE_COLOR  clrTrans  )
+{
+	OLE_HANDLE  _result;
+	raw_GetHBitmap(rect, clrTrans, &_result);
+	return _result;
+}
+
+inline short  ISkinShareBase::GetContainerCount()
+{
+	short  _result;
+	raw_GetContainerCount(&_result);
+	return _result;
+}
+
+inline BOOL  ISkinShareBase::AccessConfig2(OLE_HANDLE  pXmlEle, tstring  strKeyName, BOOL  bRead, BOOL  bCompleteUseKey  )
+{
+_bstr_t xxx_strKeyName(strKeyName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL xxx_bCompleteUseKey = bCompleteUseKey ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessConfig2(pXmlEle, xxx_strKeyName, xxx_bRead, xxx_bCompleteUseKey, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinShareBase::ExportConfig(OLE_HANDLE  pXmlEle  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ExportConfig(pXmlEle, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  ISkinShareBase::GetSharePtr()
+{
+	OLE_HANDLE  _result;
+	raw_GetSharePtr(&_result);
+	return _result;
+}
+
+inline BOOL  ISkinShareBase::DrawPreview(OLE_HANDLE  hDC, struct SkinRect  sknrc  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawPreview(hDC, sknrc, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinShareBase::IsValidateData()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsValidateData(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinShareBase::ReleaseRefrence()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ReleaseRefrence(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIPicture::Save(tstring  strFile  )
+{
+_bstr_t xxx_strFile(strFile.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Save(xxx_strFile, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline short  IDUIPicture::GetWidth()
+{
+	short  _result;
+	raw_GetWidth(&_result);
+	return _result;
+}
+
+inline short  IDUIPicture::GetHeight()
+{
+	short  _result;
+	raw_GetHeight(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIPicture::GetBitmap(OLE_COLOR  clrColorize, OLE_COLOR  clrTrans  )
+{
+	OLE_HANDLE  _result;
+	raw_GetBitmap(clrColorize, clrTrans, &_result);
+	return _result;
+}
+
+inline BOOL  ISkinWithRealResBase::ImportFile(tstring  strFile  )
+{
+_bstr_t xxx_strFile(strFile.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ImportFile(xxx_strFile, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ISkinWithRealResBase::ExportFile(tstring  strFile  )
+{
+_bstr_t xxx_strFile(strFile.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ExportFile(xxx_strFile, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline unsigned char * ISkinWithRealResBase::GetpByte()
+{
+	unsigned char * _result;
+	raw_GetpByte(&_result);
+	return _result;
+}
+
+inline long  ISkinWithRealResBase::GetlSize()
+{
+	long  _result;
+	raw_GetlSize(&_result);
+	return _result;
+}
+
+inline void IDUIEvents::OnLoaded(BOOL  bSuccessed  )
+{
+	VARIANT_BOOL xxx_bSuccessed = bSuccessed ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_OnLoaded(xxx_bSuccessed  );
+}
+
+inline BOOL  IDUIEvents::OnWinMsg(unsigned long  uMsgID, struct IDUIObj * pDUIObj  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_OnWinMsg(uMsgID, pDUIObj, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+	inline OLE_COLOR  IDUITextStyle::get_clrText()
+	{
+		OLE_COLOR _result;
+		HRESULT _hr = raw_get_clrText(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_clrText(OLE_COLOR  pVal)
+	{
+		HRESULT _hr = raw_put_clrText(pVal);
+	}
+
+	inline OLE_COLOR  IDUITextStyle::get_clrShadow()
+	{
+		OLE_COLOR _result;
+		HRESULT _hr = raw_get_clrShadow(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_clrShadow(OLE_COLOR  pVal)
+	{
+		HRESULT _hr = raw_put_clrShadow(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUITextStyle::get_bHotkeyPrefixShow()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bHotkeyPrefixShow(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_bHotkeyPrefixShow(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bHotkeyPrefixShow(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUITextStyle::get_bSingleLine()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bSingleLine(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_bSingleLine(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bSingleLine(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUITextStyle::get_bVertDraw()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bVertDraw(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_bVertDraw(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bVertDraw(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUITextStyle::get_bRightToLeft()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bRightToLeft(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_bRightToLeft(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bRightToLeft(pVal);
+	}
+
+	inline struct IDUIFontEx * IDUITextStyle::get_fontExPtr()
+	{
+		struct IDUIFontEx *_result;
+		HRESULT _hr = raw_get_fontExPtr(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_fontExPtr(struct IDUIFontEx * pVal)
+	{
+		HRESULT _hr = raw_put_fontExPtr(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nHAlign()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nHAlign(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nHAlign(short  pVal)
+	{
+		HRESULT _hr = raw_put_nHAlign(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nVAlign()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nVAlign(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nVAlign(short  pVal)
+	{
+		HRESULT _hr = raw_put_nVAlign(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nStringTrimming()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nStringTrimming(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nStringTrimming(short  pVal)
+	{
+		HRESULT _hr = raw_put_nStringTrimming(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nEffect()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nEffect(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nEffect(short  pVal)
+	{
+		HRESULT _hr = raw_put_nEffect(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nShadowHSpace()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nShadowHSpace(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nShadowHSpace(short  pVal)
+	{
+		HRESULT _hr = raw_put_nShadowHSpace(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nShadowVSpace()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nShadowVSpace(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nShadowVSpace(short  pVal)
+	{
+		HRESULT _hr = raw_put_nShadowVSpace(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nShadowOnPerPixel()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nShadowOnPerPixel(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nShadowOnPerPixel(short  pVal)
+	{
+		HRESULT _hr = raw_put_nShadowOnPerPixel(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nLeftOffset()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nLeftOffset(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nLeftOffset(short  pVal)
+	{
+		HRESULT _hr = raw_put_nLeftOffset(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nRightOffset()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nRightOffset(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nRightOffset(short  pVal)
+	{
+		HRESULT _hr = raw_put_nRightOffset(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nTopOffset()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nTopOffset(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nTopOffset(short  pVal)
+	{
+		HRESULT _hr = raw_put_nTopOffset(pVal);
+	}
+
+	inline short  IDUITextStyle::get_nBottomOffset()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nBottomOffset(&_result);
+		return _result;
+	}
+
+	inline void IDUITextStyle::put_nBottomOffset(short  pVal)
+	{
+		HRESULT _hr = raw_put_nBottomOffset(pVal);
+	}
+
+inline BOOL  IDUITextStyle::DrawText(OLE_HANDLE  hDC, tstring  strText, struct SkinRect  rect, BOOL  bCalcDraw, long  nUserFormat, struct SkinRect * pRectCalc  )
+{
+_bstr_t xxx_strText(strText.c_str());
+	VARIANT_BOOL xxx_bCalcDraw = bCalcDraw ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawText(hDC, xxx_strText, rect, xxx_bCalcDraw, nUserFormat, pRectCalc, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline long  IDUITextStyle::GetDrawFlags()
+{
+	long  _result;
+	raw_GetDrawFlags(&_result);
+	return _result;
+}
+
+inline BOOL  IDUITextStyle::CreateTextStyle(tstring  strTextStyleName, OLE_HANDLE  pDUIRes  )
+{
+_bstr_t xxx_strTextStyleName(strTextStyleName.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CreateTextStyle(xxx_strTextStyleName, pDUIRes, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct DUILOGFONT  IDUIFontEx::GetLogFont()
+{
+	struct DUILOGFONT  _result;
+	raw_GetLogFont(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIFontEx::GetHFont()
+{
+	OLE_HANDLE  _result;
+	raw_GetHFont(&_result);
+	return _result;
+}
+
+inline tstring  IDUIControlBase::GetControlTypeName()
+{
+	BSTR _result = NULL;
+	raw_GetControlTypeName(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIControlBase::GetAuthorInfo(BSTR * pbstrAuthorName, BSTR * pbstrCompany, BSTR * pbstrUrl, BSTR * pbstrVersion  )
+{
+
+	raw_GetAuthorInfo(pbstrAuthorName, pbstrCompany, pbstrUrl, pbstrVersion  );
+}
+
+inline OLE_HANDLE  IDUIControlBase::GetControlIcon(int  nWidth, int  nHeight  )
+{
+	OLE_HANDLE  _result;
+	raw_GetControlIcon(nWidth, nHeight, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIControlBase::GetDragCursor()
+{
+	OLE_HANDLE  _result;
+	raw_GetDragCursor(&_result);
+	return _result;
+}
+
+inline void IDUIControlBase::SetClassId(tstring  clsId  )
+{
+	_bstr_t xxx_clsId(clsId.c_str());
+
+	raw_SetClassId(xxx_clsId  );
+}
+
+inline tstring  IDUIControlBase::GetClassId()
+{
+	BSTR _result = NULL;
+	raw_GetClassId(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline tstring  IDUIControlBase::GetCategoryName()
+{
+	BSTR _result = NULL;
+	raw_GetCategoryName(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline BOOL  IDUIControlBase::DrawObject(struct IDUIObjectDraw * pObjDraw, struct SkinRect  sknrc  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawObject(pObjDraw, sknrc, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIControlBase::DestroyBmpPerPixel()
+{
+
+	raw_DestroyBmpPerPixel();
+}
+
+inline struct IDUIObj * IDUIControlBase::Clone(struct IDUIObj * pObjParent  )
+{
+	struct IDUIObj * _result;
+	raw_Clone(pObjParent, &_result);
+	return _result;
+}
+
+inline long  IDUIControlBase::OnMouseEnter(short  nHitTest, short  x, short  y  )
+{
+	long  _result;
+	raw_OnMouseEnter(nHitTest, x, y, &_result);
+	return _result;
+}
+
+inline long  IDUIControlBase::OnMouseMove(short  nHitTest, short  x, short  y  )
+{
+	long  _result;
+	raw_OnMouseMove(nHitTest, x, y, &_result);
+	return _result;
+}
+
+inline long  IDUIControlBase::OnLButtonDown(short  nHitTest, short  x, short  y  )
+{
+	long  _result;
+	raw_OnLButtonDown(nHitTest, x, y, &_result);
+	return _result;
+}
+
+inline long  IDUIControlBase::OnLButtonDbClick(short  nHitTest, short  x, short  y  )
+{
+	long  _result;
+	raw_OnLButtonDbClick(nHitTest, x, y, &_result);
+	return _result;
+}
+
+inline long  IDUIControlBase::OnLButtonUp(short  nHitTest, short  x, short  y  )
+{
+	long  _result;
+	raw_OnLButtonUp(nHitTest, x, y, &_result);
+	return _result;
+}
+
+inline long  IDUIControlBase::OnMouseLeave()
+{
+	long  _result;
+	raw_OnMouseLeave(&_result);
+	return _result;
+}
+
+inline long  IDUIControlBase::OnSetFocus(short  x, short  y  )
+{
+	long  _result;
+	raw_OnSetFocus(x, y, &_result);
+	return _result;
+}
+
+inline void IDUIControlBase::OnKillFocus()
+{
+
+	raw_OnKillFocus();
+}
+
+inline void IDUIControlBase::OnSize()
+{
+
+	raw_OnSize();
+}
+
+inline void IDUIControlBase::OnTimer(unsigned int  nIDEvent  )
+{
+
+	raw_OnTimer(nIDEvent  );
+}
+
+inline void IDUIControlBase::DirectRedraw()
+{
+
+	raw_DirectRedraw();
+}
+
+inline tstring  IDUIControlBase::CallProp(long  lPropId  )
+{
+	BSTR _result = NULL;
+	raw_CallProp(lPropId, &_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIControlBase::AddProp(struct ICtrlPluginProp * pProp  )
+{
+
+	raw_AddProp(pProp  );
+}
+
+inline void IDUIControlBase::GetPropList(OLE_HANDLE * pPropList  )
+{
+
+	raw_GetPropList(pPropList  );
+}
+
+inline void IDUIControlBase::Load()
+{
+
+	raw_Load();
+}
+
+inline void IDUIControlBase::AddPlugInObj(struct IDUIControlBase * pPluginObj  )
+{
+
+	raw_AddPlugInObj(pPluginObj  );
+}
+
+inline void IDUIControlBase::RemovePlugInObj(struct IDUIControlBase * pPluginObj  )
+{
+
+	raw_RemovePlugInObj(pPluginObj  );
+}
+
+inline void IDUIControlBase::DesignStatusChanged(BOOL  bDesign  )
+{
+	VARIANT_BOOL xxx_bDesign = bDesign ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_DesignStatusChanged(xxx_bDesign  );
+}
+
+inline OLE_HANDLE  IDUIControlBase::CreateObj(OLE_HANDLE  pSkinResource, OLE_HANDLE  pObjParent, long  ntype, BOOL  bInsertFirst  )
+{
+	VARIANT_BOOL xxx_bInsertFirst = bInsertFirst ? VARIANT_TRUE : VARIANT_FALSE;
+	OLE_HANDLE  _result;
+	raw_CreateObj(pSkinResource, pObjParent, ntype, xxx_bInsertFirst, &_result);
+	return _result;
+}
+
+inline void IDUIControlBase::DrawPreview(OLE_HANDLE  hDC, struct SkinRect * sknrc  )
+{
+
+	raw_DrawPreview(hDC, sknrc  );
+}
+
+inline void IDUIControlBase::FinalCreate(BOOL  bNewObject  )
+{
+	VARIANT_BOOL xxx_bNewObject = bNewObject ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_FinalCreate(xxx_bNewObject  );
+}
+
+inline IDispatch * IDUIControlBase::GetInerface(OLE_HANDLE  pIID  )
+{
+	IDispatch * _result;
+	raw_GetInerface(pIID, &_result);
+	return _result;
+}
+
+inline void IDUIControlBase::SetRealCtrlPtr(struct IDUIControlBase * pCtrlBase  )
+{
+
+	raw_SetRealCtrlPtr(pCtrlBase  );
+}
+
+inline struct IDUIControlBase * IDUIControlBase::GetRealCtrlPtr()
+{
+	struct IDUIControlBase * _result;
+	raw_GetRealCtrlPtr(&_result);
+	return _result;
+}
+
+inline void IDUIControlBase::SetCursorPtr(struct IDUICursor * pCursor  )
+{
+
+	raw_SetCursorPtr(pCursor  );
+}
+
+inline struct IDUICursor * IDUIControlBase::GetCursorPtr()
+{
+	struct IDUICursor * _result;
+	raw_GetCursorPtr(&_result);
+	return _result;
+}
+
+inline void IDUIControlBase::SetHotkeyPtr(struct IDUIHotkey * pHotkey1, struct IDUIHotkey * pHotkey2  )
+{
+
+	raw_SetHotkeyPtr(pHotkey1, pHotkey2  );
+}
+
+inline void IDUIControlBase::GetHotkeyPtr(struct IDUIHotkey ** ppHotkey1, struct IDUIHotkey ** ppHotkey2  )
+{
+
+	raw_GetHotkeyPtr(ppHotkey1, ppHotkey2  );
+}
+
+inline void IDUIControlBase::SetBackEnterHotkey(BOOL  bIsBackSpace, BOOL  bIsEnter  )
+{
+	VARIANT_BOOL xxx_bIsBackSpace = bIsBackSpace ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL xxx_bIsEnter = bIsEnter ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetBackEnterHotkey(xxx_bIsBackSpace, xxx_bIsEnter  );
+}
+
+inline void IDUIControlBase::GetBackEnterHotkey(VARIANT_BOOL * pbIsBackSpace, VARIANT_BOOL * pbIsEnter  )
+{
+
+	raw_GetBackEnterHotkey(pbIsBackSpace, pbIsEnter  );
+}
+
+inline struct ICtrlPluginProp * IDUIControlBase::CreateGroupProp(struct ICtrlPluginProp * pParentProp, tstring  strPropName, BOOL  bExpand  )
+{
+_bstr_t xxx_strPropName(strPropName.c_str());
+	VARIANT_BOOL xxx_bExpand = bExpand ? VARIANT_TRUE : VARIANT_FALSE;
+	struct ICtrlPluginProp * _result;
+	raw_CreateGroupProp(pParentProp, xxx_strPropName, xxx_bExpand, &_result);
+	return _result;
+}
+
+inline struct IDUIPropBase * IDUIControlBase::CreateProp(struct ICtrlPluginProp * pPropParent, enum enumPropType  eType, tstring  strPropName, tstring  strPropHelp, BOOL  bIsStyle, struct IPropChangedCallback * pCallback  )
+{
+_bstr_t xxx_strPropName(strPropName.c_str());
+_bstr_t xxx_strPropHelp(strPropHelp.c_str());
+	VARIANT_BOOL xxx_bIsStyle = bIsStyle ? VARIANT_TRUE : VARIANT_FALSE;
+	struct IDUIPropBase * _result;
+	raw_CreateProp(pPropParent, eType, xxx_strPropName, xxx_strPropHelp, xxx_bIsStyle, pCallback, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIControlBase::ExportConfig(OLE_HANDLE  pXmlEle  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ExportConfig(pXmlEle, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIControlBase * IDUIControlBase::ImportConfig(struct IDUIRes * pDUIRes, OLE_HANDLE  hObjParent  )
+{
+	struct IDUIControlBase * _result;
+	raw_ImportConfig(pDUIRes, hObjParent, &_result);
+	return _result;
+}
+
+inline tstring  IDUIControlBase::GetFilePath()
+{
+	BSTR _result = NULL;
+	raw_GetFilePath(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIControlBase::DrawChildren(OLE_HANDLE  hDC, struct SkinRect  sknrc  )
+{
+
+	raw_DrawChildren(hDC, sknrc  );
+}
+
+inline BOOL  IDUIControlBase::IsDragabled()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsDragabled(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIControlBase::EventNotify(struct DUINotify * peVentNotify  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_EventNotify(peVentNotify, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIControlBase::PropChangedNotify(struct IDUIPropBase * pProp  )
+{
+
+	raw_PropChangedNotify(pProp  );
+}
+
+inline void IDUIControlBase::SetRootObject(BOOL  bRootObj  )
+{
+	VARIANT_BOOL xxx_bRootObj = bRootObj ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetRootObject(xxx_bRootObj  );
+}
+
+inline BOOL  IDUIControlBase::IsRootObject()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsRootObject(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIControlBase::CreateProps()
+{
+
+	raw_CreateProps();
+}
+
+inline BOOL  IDUIControlBase::SetFocus()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_SetFocus(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIControlBase::SetTabStop(BOOL  bTabStop  )
+{
+	VARIANT_BOOL xxx_bTabStop = bTabStop ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetTabStop(xxx_bTabStop  );
+}
+
+inline BOOL  IDUIControlBase::IsTabStop()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsTabStop(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIControlBase::SetDrawFocus(BOOL  bDrawFocus  )
+{
+	VARIANT_BOOL xxx_bDrawFocus = bDrawFocus ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetDrawFocus(xxx_bDrawFocus  );
+}
+
+inline BOOL  IDUIControlBase::IsDrawFocus()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsDrawFocus(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIControlBase::AddMsgCallback(long  nMsgID, OLE_HANDLE  hFuncCallback, OLE_HANDLE  pThis  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AddMsgCallback(nMsgID, hFuncCallback, pThis, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIControlBase::RemoveMsgCallback(long  nMsgID, OLE_HANDLE  hFuncCallback  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveMsgCallback(nMsgID, hFuncCallback, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline short  IDUIControlBase::GetMsgCallbackCount(long  nMsgID  )
+{
+	short  _result;
+	raw_GetMsgCallbackCount(nMsgID, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIControlBase::GetCallbackAddress(long  nMsgID, OLE_HANDLE  pThis  )
+{
+	OLE_HANDLE  _result;
+	raw_GetCallbackAddress(nMsgID, pThis, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIControlBase::CallMsg(long  nMsgID, OLE_HANDLE  wParam, OLE_HANDLE  lParam  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CallMsg(nMsgID, wParam, lParam, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIControlBase::RebuildPropBaseXMLNode()
+{
+
+	raw_RebuildPropBaseXMLNode();
+}
+
+inline void IDUIControlBase::SetIsComposeCtrl(BOOL  bIsComposeCtrl  )
+{
+	VARIANT_BOOL xxx_bIsComposeCtrl = bIsComposeCtrl ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetIsComposeCtrl(xxx_bIsComposeCtrl  );
+}
+
+inline BOOL  IDUIControlBase::IsComposeCtrl()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsComposeCtrl(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIControlBase::ClearPropBaseXMLNode()
+{
+
+	raw_ClearPropBaseXMLNode();
+}
+
+inline void IDUIControlBase::DUISetToolTip(tstring  strTool  )
+{
+	_bstr_t xxx_strTool(strTool.c_str());
+
+	raw_DUISetToolTip(xxx_strTool  );
+}
+
+inline tstring  IDUIControlBase::DUIGetToolTip()
+{
+	BSTR _result = NULL;
+	raw_DUIGetToolTip(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIControlBase::SetDragabledProp(BOOL  bDragabled  )
+{
+	VARIANT_BOOL xxx_bDragabled = bDragabled ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetDragabledProp(xxx_bDragabled  );
+}
+
+inline BOOL  IDUIControlBase::IsDragabledProp()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsDragabledProp(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIObjectDraw::EndDraw()
+{
+
+	raw_EndDraw();
+}
+
+inline OLE_HANDLE  IDUIObjectDraw::GetDC(BOOL  bBlend  )
+{
+	VARIANT_BOOL xxx_bBlend = bBlend ? VARIANT_TRUE : VARIANT_FALSE;
+	OLE_HANDLE  _result;
+	raw_GetDC(xxx_bBlend, &_result);
+	return _result;
+}
+
+inline struct SkinRect  IDUIObjectDraw::GetDrawRect()
+{
+	struct SkinRect  _result;
+	raw_GetDrawRect(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIObjectDraw::PaintIcon(struct SkinRect  rcDest, OLE_HANDLE  hIcon  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_PaintIcon(rcDest, hIcon, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIObjectDraw::PaintImageAll(OLE_HANDLE  hBmpSrc, BOOL  bNullCopy  )
+{
+	VARIANT_BOOL xxx_bNullCopy = bNullCopy ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_PaintImageAll(hBmpSrc, xxx_bNullCopy, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIObjectDraw::PaintImagePart(struct SkinRect  rcDest, OLE_HANDLE  hBmpSrc  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_PaintImagePart(rcDest, hBmpSrc, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIObjectDraw::PaintPartImagePart(struct SkinRect  rcDest, struct SkinRect  rcSrc, OLE_HANDLE  hBmpSrc  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_PaintPartImagePart(rcDest, rcSrc, hBmpSrc, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIObjectDraw::DrawText(struct IDUITextStyle * pTextStyle, tstring  strText  )
+{
+_bstr_t xxx_strText(strText.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_DrawText(pTextStyle, xxx_strText, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIObjectDraw::Blend()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Blend(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  IDUIObjectDraw::GetBmpBits()
+{
+	OLE_HANDLE  _result;
+	raw_GetBmpBits(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIObjectDraw::SaveBitmap(tstring  strImagePath  )
+{
+_bstr_t xxx_strImagePath(strImagePath.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_SaveBitmap(xxx_strImagePath, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+	inline VARIANT_BOOL  ICtrlPluginProp::get_bGroup()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bGroup(&_result);
+		return _result;
+	}
+
+	inline void ICtrlPluginProp::put_bGroup(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bGroup(pVal);
+	}
+
+	inline BSTR  ICtrlPluginProp::get_strName()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strName(&_result);
+		return _result;
+	}
+
+	inline void ICtrlPluginProp::put_strName(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strName(pVal);
+	}
+
+inline void ICtrlPluginProp::AddSkinProp(struct IDUIPropType * pSkinProp  )
+{
+
+	raw_AddSkinProp(pSkinProp  );
+}
+
+inline void ICtrlPluginProp::RemoveSkinProp(struct IDUIPropType * pSkinProp  )
+{
+
+	raw_RemoveSkinProp(pSkinProp  );
+}
+
+inline void ICtrlPluginProp::AddProp(struct ICtrlPluginProp * pSubProp  )
+{
+
+	raw_AddProp(pSubProp  );
+}
+
+inline void ICtrlPluginProp::RemoveProp(struct ICtrlPluginProp * pSubProp  )
+{
+
+	raw_RemoveProp(pSubProp  );
+}
+
+inline BOOL  ICtrlPluginProp::AccessConfig(OLE_HANDLE  pXmlEle, BOOL  bRead  )
+{
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessConfig(pXmlEle, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  ICtrlPluginProp::ExportConfig(tstring  strParentName, OLE_HANDLE  pXmlEle  )
+{
+_bstr_t xxx_strParentName(strParentName.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ExportConfig(xxx_strParentName, pXmlEle, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ICtrlPluginProp::Expand(BOOL  bExpand  )
+{
+	VARIANT_BOOL xxx_bExpand = bExpand ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_Expand(xxx_bExpand  );
+}
+
+inline BOOL  ICtrlPluginProp::IsExpand()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsExpand(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ICtrlPluginProp::SetParent(struct ICtrlPluginProp * pParent  )
+{
+
+	raw_SetParent(pParent  );
+}
+
+inline struct ICtrlPluginProp * ICtrlPluginProp::GetParent()
+{
+	struct ICtrlPluginProp * _result;
+	raw_GetParent(&_result);
+	return _result;
+}
+
+inline long  ICtrlPluginProp::GetSkinPropTypeCount()
+{
+	long  _result;
+	raw_GetSkinPropTypeCount(&_result);
+	return _result;
+}
+
+inline struct IDUIPropType * ICtrlPluginProp::GetSkinPropTypeFromIndex(long  nIndex  )
+{
+	struct IDUIPropType * _result;
+	raw_GetSkinPropTypeFromIndex(nIndex, &_result);
+	return _result;
+}
+
+inline long  ICtrlPluginProp::GetAddinPropCount()
+{
+	long  _result;
+	raw_GetAddinPropCount(&_result);
+	return _result;
+}
+
+inline struct ICtrlPluginProp * ICtrlPluginProp::GetAddinPropByIndex(long  nIndex  )
+{
+	struct ICtrlPluginProp * _result;
+	raw_GetAddinPropByIndex(nIndex, &_result);
+	return _result;
+}
+
+inline struct IDUIRes * ICtrlPluginProp::GetDUIRes()
+{
+	struct IDUIRes * _result;
+	raw_GetDUIRes(&_result);
+	return _result;
+}
+
+inline void ICtrlPluginProp::SetDUIRes(struct IDUIRes * pDUIRes  )
+{
+
+	raw_SetDUIRes(pDUIRes  );
+}
+
+inline struct IDUIControlBase * ICtrlPluginProp::GetControlBasePtr()
+{
+	struct IDUIControlBase * _result;
+	raw_GetControlBasePtr(&_result);
+	return _result;
+}
+
+inline void ICtrlPluginProp::SetControlBasePtr(struct IDUIControlBase * pCtrlBase  )
+{
+
+	raw_SetControlBasePtr(pCtrlBase  );
+}
+
+inline BOOL  ICtrlPluginProp::AccessConfig2(tstring  strParentName, OLE_HANDLE  pXmlEle, BOOL  bRead  )
+{
+_bstr_t xxx_strParentName(strParentName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessConfig2(xxx_strParentName, pXmlEle, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void ICtrlPluginProp::AddPropBase(struct IDUIPropBase * pProp  )
+{
+
+	raw_AddPropBase(pProp  );
+}
+
+inline void ICtrlPluginProp::RemovePropBase(struct IDUIPropBase * pProp  )
+{
+
+	raw_RemovePropBase(pProp  );
+}
+
+inline void ICtrlPluginProp::RemoveAllPropBase()
+{
+
+	raw_RemoveAllPropBase();
+}
+
+inline long  ICtrlPluginProp::GetPropBaseCount()
+{
+	long  _result;
+	raw_GetPropBaseCount(&_result);
+	return _result;
+}
+
+inline struct IDUIPropBase * ICtrlPluginProp::GetAtPropBase(long  nIndex  )
+{
+	struct IDUIPropBase * _result;
+	raw_GetAtPropBase(nIndex, &_result);
+	return _result;
+}
+
+inline void ICtrlPluginProp::Clone(struct ICtrlPluginProp * pPropSrc  )
+{
+
+	raw_Clone(pPropSrc  );
+}
+
+inline void ICtrlPluginProp::SetGetExpandCallback(OLE_HANDLE  pCallback, OLE_HANDLE  pProp  )
+{
+
+	raw_SetGetExpandCallback(pCallback, pProp  );
+}
+
+inline void ICtrlPluginProp::RebuildPropBaseStyleNode(OLE_HANDLE  pStyleNode  )
+{
+
+	raw_RebuildPropBaseStyleNode(pStyleNode  );
+}
+
+inline BOOL  ICtrlPluginProp::AccessConfig3(tstring  strParentName, OLE_HANDLE  pXmlEle, BOOL  bRead  )
+{
+_bstr_t xxx_strParentName(strParentName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessConfig3(xxx_strParentName, pXmlEle, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+	inline BSTR  IDUIPropType::get_strName()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strName(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_strName(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strName(pVal);
+	}
+
+	inline enum enumPropType  IDUIPropType::get_eType()
+	{
+		enum enumPropType _result;
+		HRESULT _hr = raw_get_eType(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_eType(enum enumPropType  pVal)
+	{
+		HRESULT _hr = raw_put_eType(pVal);
+	}
+
+	inline VARIANT * IDUIPropType::get_vtValue()
+	{
+		VARIANT *_result;
+		HRESULT _hr = raw_get_vtValue(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_vtValue(VARIANT * pVal)
+	{
+		HRESULT _hr = raw_put_vtValue(pVal);
+	}
+
+	inline BSTR  IDUIPropType::get_strHelp()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strHelp(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_strHelp(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strHelp(pVal);
+	}
+
+	inline short  IDUIPropType::get_nStatus()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nStatus(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_nStatus(short  pVal)
+	{
+		HRESULT _hr = raw_put_nStatus(pVal);
+	}
+
+	inline BSTR  IDUIPropType::get_strValue()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strValue(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_strValue(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strValue(pVal);
+	}
+
+	inline long  IDUIPropType::get_lPropId()
+	{
+		long _result;
+		HRESULT _hr = raw_get_lPropId(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_lPropId(long  pVal)
+	{
+		HRESULT _hr = raw_put_lPropId(pVal);
+	}
+
+	inline long  IDUIPropType::get_nComboSelItem()
+	{
+		long _result;
+		HRESULT _hr = raw_get_nComboSelItem(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_nComboSelItem(long  pVal)
+	{
+		HRESULT _hr = raw_put_nComboSelItem(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIPropType::get_bAccess()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bAccess(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_bAccess(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bAccess(pVal);
+	}
+
+	inline IDispatch * IDUIPropType::get_pIDispatch()
+	{
+		IDispatch *_result;
+		HRESULT _hr = raw_get_pIDispatch(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_pIDispatch(IDispatch * pVal)
+	{
+		HRESULT _hr = raw_put_pIDispatch(pVal);
+	}
+
+	inline OLE_HANDLE  IDUIPropType::get_pVoid()
+	{
+		OLE_HANDLE _result;
+		HRESULT _hr = raw_get_pVoid(&_result);
+		return _result;
+	}
+
+	inline void IDUIPropType::put_pVoid(OLE_HANDLE  pVal)
+	{
+		HRESULT _hr = raw_put_pVoid(pVal);
+	}
+
+inline void IDUIPropType::SetIntPropMinMax(int  nMin, int  nMax  )
+{
+
+	raw_SetIntPropMinMax(nMin, nMax  );
+}
+
+inline void IDUIPropType::GetIntPropMinMax(int * nMin, int * nMax  )
+{
+
+	raw_GetIntPropMinMax(nMin, nMax  );
+}
+
+inline void IDUIPropType::SetLongPropMinMax(long  nMin, long  nMax  )
+{
+
+	raw_SetLongPropMinMax(nMin, nMax  );
+}
+
+inline void IDUIPropType::GetLongPropMinMax(long * nMin, long * nMax  )
+{
+
+	raw_GetLongPropMinMax(nMin, nMax  );
+}
+
+inline void IDUIPropType::SetFloatPropMinMax(float  fMin, float  fMax  )
+{
+
+	raw_SetFloatPropMinMax(fMin, fMax  );
+}
+
+inline void IDUIPropType::GetFloatPropMinMax(float * fMin, float * fMax  )
+{
+
+	raw_GetFloatPropMinMax(fMin, fMax  );
+}
+
+inline long * IDUIPropType::GetComboSelItemIndexPtr()
+{
+	long * _result;
+	raw_GetComboSelItemIndexPtr(&_result);
+	return _result;
+}
+
+inline struct IDUIPropBase * IDUIPropType::GetPropBase()
+{
+	struct IDUIPropBase * _result;
+	raw_GetPropBase(&_result);
+	return _result;
+}
+
+inline void IDUIPropType::SetPropBase(struct IDUIPropBase * pPropBase  )
+{
+
+	raw_SetPropBase(pPropBase  );
+}
+
+inline struct ICtrlPluginProp * IDUIPropType::GetParentProp()
+{
+	struct ICtrlPluginProp * _result;
+	raw_GetParentProp(&_result);
+	return _result;
+}
+
+inline void IDUIPropType::SetParentProp(struct ICtrlPluginProp * pPropParent  )
+{
+
+	raw_SetParentProp(pPropParent  );
+}
+
+inline struct IDUIPropType * IDUIPropBase::GetPropTypePtr()
+{
+	struct IDUIPropType * _result;
+	raw_GetPropTypePtr(&_result);
+	return _result;
+}
+
+inline void IDUIPropBase::SetName(tstring  strName  )
+{
+	_bstr_t xxx_strName(strName.c_str());
+
+	raw_SetName(xxx_strName  );
+}
+
+inline tstring  IDUIPropBase::GetName()
+{
+	BSTR _result = NULL;
+	raw_GetName(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIPropBase::SetHelp(tstring  strHelp  )
+{
+	_bstr_t xxx_strHelp(strHelp.c_str());
+
+	raw_SetHelp(xxx_strHelp  );
+}
+
+inline tstring  IDUIPropBase::GetHelp()
+{
+	BSTR _result = NULL;
+	raw_GetHelp(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIPropBase::SetType(enum enumPropType  eType  )
+{
+
+	raw_SetType(eType  );
+}
+
+inline enum enumPropType  IDUIPropBase::GetType()
+{
+	enum enumPropType  _result;
+	raw_GetType(&_result);
+	return _result;
+}
+
+inline void IDUIPropBase::SetVariant(VARIANT * variant  )
+{
+
+	raw_SetVariant(variant  );
+}
+
+inline VARIANT * IDUIPropBase::GetVariant()
+{
+	VARIANT * _result;
+	raw_GetVariant(&_result);
+	return _result;
+}
+
+inline void IDUIPropBase::SetDispatch(IDispatch * pDisp  )
+{
+
+	raw_SetDispatch(pDisp  );
+}
+
+inline IDispatch * IDUIPropBase::GetDispatch()
+{
+	IDispatch * _result;
+	raw_GetDispatch(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIPropBase::AccessConfig(OLE_HANDLE  pXmlEle, tstring  strKeyName, BOOL  bRead, BOOL  bCompleteUseKey  )
+{
+_bstr_t xxx_strKeyName(strKeyName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL xxx_bCompleteUseKey = bCompleteUseKey ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessConfig(pXmlEle, xxx_strKeyName, xxx_bRead, xxx_bCompleteUseKey, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIPropBase::SetDUIRes(struct IDUIRes * pDUIRes  )
+{
+
+	raw_SetDUIRes(pDUIRes  );
+}
+
+inline struct IDUIRes * IDUIPropBase::GetDUIRes()
+{
+	struct IDUIRes * _result;
+	raw_GetDUIRes(&_result);
+	return _result;
+}
+
+inline void IDUIPropBase::SetPrivateValue(VARIANT * variant  )
+{
+
+	raw_SetPrivateValue(variant  );
+}
+
+inline void IDUIPropBase::Clone(struct IDUIPropBase * pSrcProp  )
+{
+
+	raw_Clone(pSrcProp  );
+}
+
+inline BOOL  IDUIPropBase::ExportConfig(OLE_HANDLE  pXmlEle, tstring  strKeyName  )
+{
+_bstr_t xxx_strKeyName(strKeyName.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ExportConfig(pXmlEle, xxx_strKeyName, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIPropBase::DoCallbackFunc()
+{
+
+	raw_DoCallbackFunc();
+}
+
+inline void IDUIPropBase::SetChangedCallback(struct IPropChangedCallback * pCallback  )
+{
+
+	raw_SetChangedCallback(pCallback  );
+}
+
+inline struct IPropChangedCallback * IDUIPropBase::GetChangedCallback()
+{
+	struct IPropChangedCallback * _result;
+	raw_GetChangedCallback(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIPropBase::IsStyle()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsStyle(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIPropBase::SetStyle(BOOL  bIsStyle  )
+{
+	VARIANT_BOOL xxx_bIsStyle = bIsStyle ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetStyle(xxx_bIsStyle  );
+}
+
+inline void IDUIPropBase::SetPropertyNode(OLE_HANDLE  pPropertyNode  )
+{
+
+	raw_SetPropertyNode(pPropertyNode  );
+}
+
+inline OLE_HANDLE  IDUIPropBase::GetPropertyNode()
+{
+	OLE_HANDLE  _result;
+	raw_GetPropertyNode(&_result);
+	return _result;
+}
+
+inline void IDUIPropBase::SetStyleNode(OLE_HANDLE  pStyleNode  )
+{
+
+	raw_SetStyleNode(pStyleNode  );
+}
+
+inline OLE_HANDLE  IDUIPropBase::GetStyleNode()
+{
+	OLE_HANDLE  _result;
+	raw_GetStyleNode(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIPropBase::ReleaseResource()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ReleaseResource(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IPropChangedCallback::Do(struct IDUIControlBase * pControlBase  )
+{
+
+	raw_Do(pControlBase  );
+}
+
+	inline struct IDUIPicture * IDUICursor::get_ImageObj()
+	{
+		struct IDUIPicture *_result;
+		HRESULT _hr = raw_get_ImageObj(&_result);
+		return _result;
+	}
+
+	inline void IDUICursor::put_ImageObj(struct IDUIPicture * pVal)
+	{
+		HRESULT _hr = raw_put_ImageObj(pVal);
+	}
+
+inline long  IDUICursor::GetStandardCursorID()
+{
+	long  _result;
+	raw_GetStandardCursorID(&_result);
+	return _result;
+}
+
+inline BOOL  IDUICursor::IsStandardCursor()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsStandardCursor(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  IDUICursor::GetCursorHandle()
+{
+	OLE_HANDLE  _result;
+	raw_GetCursorHandle(&_result);
+	return _result;
+}
+
+inline void IDUICursor::SetCursor()
+{
+
+	raw_SetCursor();
+}
+
+	inline long  IDUIHotkey::get_wVirtualKeyCode()
+	{
+		long _result;
+		HRESULT _hr = raw_get_wVirtualKeyCode(&_result);
+		return _result;
+	}
+
+	inline void IDUIHotkey::put_wVirtualKeyCode(long  pVal)
+	{
+		HRESULT _hr = raw_put_wVirtualKeyCode(pVal);
+	}
+
+	inline long  IDUIHotkey::get_wModifiers()
+	{
+		long _result;
+		HRESULT _hr = raw_get_wModifiers(&_result);
+		return _result;
+	}
+
+	inline void IDUIHotkey::put_wModifiers(long  pVal)
+	{
+		HRESULT _hr = raw_put_wModifiers(pVal);
+	}
+
+inline BOOL  IDUIHotkey::AccessConfig2(OLE_HANDLE  pXmlEle, tstring  strKeyName, BOOL  bRead, BOOL  bCompleteUseKey  )
+{
+_bstr_t xxx_strKeyName(strKeyName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL xxx_bCompleteUseKey = bCompleteUseKey ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessConfig2(pXmlEle, xxx_strKeyName, xxx_bRead, xxx_bCompleteUseKey, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIHotkey::SetDUIRes(struct IDUIRes * pDUIRes  )
+{
+
+	raw_SetDUIRes(pDUIRes  );
+}
+
+inline struct IDUIRes * IDUIHotkey::GetDUIRes()
+{
+	struct IDUIRes * _result;
+	raw_GetDUIRes(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIHotkey::ExportConfig(OLE_HANDLE  pXmlEle, tstring  strKeyName  )
+{
+_bstr_t xxx_strKeyName(strKeyName.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ExportConfig(pXmlEle, xxx_strKeyName, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::ShowWindow(OLE_HANDLE  hWnd, enum ShowWindowFlags  nFlag  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ShowWindow(hWnd, nFlag, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::SetWindowPos(OLE_HANDLE  hWnd, OLE_HANDLE  hWndInsertAfter, short  x, short  y, short  cx, short  cy, long  lFlags  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_SetWindowPos(hWnd, hWndInsertAfter, x, y, cx, cy, lFlags, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline long  IDUIWindow::SendMessage(OLE_HANDLE  hWnd, long  nMsgID, OLE_HANDLE  wParam, OLE_HANDLE  lParam  )
+{
+	long  _result;
+	raw_SendMessage(hWnd, nMsgID, wParam, lParam, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIWindow::PostMessage(OLE_HANDLE  hWnd, long  nMsgID, OLE_HANDLE  wParam, OLE_HANDLE  lParam  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_PostMessage(hWnd, nMsgID, wParam, lParam, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline long  IDUIWindow::GetStyle(OLE_HANDLE  hWnd  )
+{
+	long  _result;
+	raw_GetStyle(hWnd, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIWindow::ModifyStyle(OLE_HANDLE  hWnd, long  dwRemove, long  dwAdd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ModifyStyle(hWnd, dwRemove, dwAdd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline long  IDUIWindow::GetExStyle(OLE_HANDLE  hWnd  )
+{
+	long  _result;
+	raw_GetExStyle(hWnd, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIWindow::ModifyExStyle(OLE_HANDLE  hWnd, long  dwRemove, long  dwAdd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_ModifyExStyle(hWnd, dwRemove, dwAdd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  IDUIWindow::Create(long  dwExStyle, tstring  strClassName, tstring  strWindowName, long  dwStyle, short  x, short  y, short  nWidth, short  nHeight, OLE_HANDLE  hWndParent  )
+{
+_bstr_t xxx_strClassName(strClassName.c_str());
+_bstr_t xxx_strWindowName(strWindowName.c_str());
+	OLE_HANDLE  _result;
+	raw_Create(dwExStyle, xxx_strClassName, xxx_strWindowName, dwStyle, x, y, nWidth, nHeight, hWndParent, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIWindow::Destroy(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Destroy(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::MoveWindow(OLE_HANDLE  hWnd, short  x, short  y, short  nWidth, short  nHeight, BOOL  bRepaint  )
+{
+	VARIANT_BOOL xxx_bRepaint = bRepaint ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_MoveWindow(hWnd, x, y, nWidth, nHeight, xxx_bRepaint, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline short  IDUIWindow::GetDlgCtrlID(OLE_HANDLE  hWnd  )
+{
+	short  _result;
+	raw_GetDlgCtrlID(hWnd, &_result);
+	return _result;
+}
+
+inline long  IDUIWindow::SetDlgCtrlID(OLE_HANDLE  hWnd, short  nID  )
+{
+	long  _result;
+	raw_SetDlgCtrlID(hWnd, nID, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIWindow::GetDlgItem(OLE_HANDLE  hWnd, short  nID  )
+{
+	OLE_HANDLE  _result;
+	raw_GetDlgItem(hWnd, nID, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIWindow::SetWindowText(OLE_HANDLE  hWnd, tstring  strString  )
+{
+_bstr_t xxx_strString(strString.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_SetWindowText(hWnd, xxx_strString, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline tstring  IDUIWindow::GetWindowText(OLE_HANDLE  hWnd  )
+{
+	BSTR _result = NULL;
+	raw_GetWindowText(hWnd, &_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline BOOL  IDUIWindow::BringWindowToTop(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_BringWindowToTop(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::IsWindowVisible(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsWindowVisible(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::IsWindowEnabled(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsWindowEnabled(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::EnableWindow(OLE_HANDLE  hWnd, BOOL  bEnable  )
+{
+	VARIANT_BOOL xxx_bEnable = bEnable ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_EnableWindow(hWnd, xxx_bEnable, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline short  IDUIWindow::SetTimer(OLE_HANDLE  hWnd, short  nIDEvent, short  nElapse  )
+{
+	short  _result;
+	raw_SetTimer(hWnd, nIDEvent, nElapse, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIWindow::KillTimer(OLE_HANDLE  hWnd, short  nIDEvent  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_KillTimer(hWnd, nIDEvent, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIRect * IDUIWindow::GetWindowRect(OLE_HANDLE  hWnd  )
+{
+	struct IDUIRect * _result;
+	raw_GetWindowRect(hWnd, &_result);
+	return _result;
+}
+
+inline struct IDUIRect * IDUIWindow::GetClientRect(OLE_HANDLE  hWnd  )
+{
+	struct IDUIRect * _result;
+	raw_GetClientRect(hWnd, &_result);
+	return _result;
+}
+
+inline BOOL  IDUIWindow::IsZoomed(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsZoomed(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::SetRedraw(OLE_HANDLE  hWnd, BOOL  bRedraw  )
+{
+	VARIANT_BOOL xxx_bRedraw = bRedraw ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_SetRedraw(hWnd, xxx_bRedraw, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::InvalidateRect(OLE_HANDLE  hWnd, short  left, short  top, short  right, short  bottom, BOOL  bErase  )
+{
+	VARIANT_BOOL xxx_bErase = bErase ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_InvalidateRect(hWnd, left, top, right, bottom, xxx_bErase, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::UpdateWindow(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_UpdateWindow(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::LockWindowUpdate(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_LockWindowUpdate(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::RedrawWindow(OLE_HANDLE  hWnd, struct SkinRect  sknrcUpdate, OLE_HANDLE  hrgnUpdate, short  nFlags  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RedrawWindow(hWnd, sknrcUpdate, hrgnUpdate, nFlags, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIWindow::CloseWindow(OLE_HANDLE  hWnd  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CloseWindow(hWnd, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  IDUIWindow::GetCapture()
+{
+	OLE_HANDLE  _result;
+	raw_GetCapture(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIWindow::SetCapture(OLE_HANDLE  hWnd  )
+{
+	OLE_HANDLE  _result;
+	raw_SetCapture(hWnd, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIWindow::SetFocus(OLE_HANDLE  hWnd  )
+{
+	OLE_HANDLE  _result;
+	raw_SetFocus(hWnd, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIWindow::GetActiveWindow()
+{
+	OLE_HANDLE  _result;
+	raw_GetActiveWindow(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIWindow::SetActiveWindow(OLE_HANDLE  hWnd  )
+{
+	OLE_HANDLE  _result;
+	raw_SetActiveWindow(hWnd, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIWindow::GetParent(OLE_HANDLE  hWnd  )
+{
+	OLE_HANDLE  _result;
+	raw_GetParent(hWnd, &_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIWindow::SetParent(OLE_HANDLE  hWnd, OLE_HANDLE  hNewParent  )
+{
+	OLE_HANDLE  _result;
+	raw_SetParent(hWnd, hNewParent, &_result);
+	return _result;
+}
+
+inline short  IDUIWindow::MessageBox(OLE_HANDLE  hWnd, tstring  strText, tstring  strCaption, long  lFlags  )
+{
+_bstr_t xxx_strText(strText.c_str());
+_bstr_t xxx_strCaption(strCaption.c_str());
+	short  _result;
+	raw_MessageBox(hWnd, xxx_strText, xxx_strCaption, lFlags, &_result);
+	return _result;
+}
+
+inline long  IDUIWindow::DUIGetSystemMetrics(long  flags  )
+{
+	long  _result;
+	raw_DUIGetSystemMetrics(flags, &_result);
+	return _result;
+}
+
+inline long  IDUIWindow::DUISleep(long  Seconds  )
+{
+	long  _result;
+	raw_DUISleep(Seconds, &_result);
+	return _result;
+}
+
+inline long  IDUIWindow::DUIGetCursorPosX()
+{
+	long  _result;
+	raw_DUIGetCursorPosX(&_result);
+	return _result;
+}
+
+inline long  IDUIWindow::DUIGetCursorPosY()
+{
+	long  _result;
+	raw_DUIGetCursorPosY(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IDUIXMLNode::GetXMLNode()
+{
+	OLE_HANDLE  _result;
+	raw_GetXMLNode(&_result);
+	return _result;
+}
+
+inline void IDUIXMLNode::SetXMLNode(OLE_HANDLE  pXMLNode  )
+{
+
+	raw_SetXMLNode(pXMLNode  );
+}
+
+inline BOOL  IDUIXMLNode::AccessAttribLong(tstring  strAttribName, long * plValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribLong(xxx_strAttribName, plValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIXMLNode::AccessAttribFloat(tstring  strAttribName, float * pfValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribFloat(xxx_strAttribName, pfValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIXMLNode::AccessAttribDouble(tstring  strAttribName, double * pdValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribDouble(xxx_strAttribName, pdValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIXMLNode::AccessAttribBOOL(tstring  strAttribName, VARIANT_BOOL * pbValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribBOOL(xxx_strAttribName, pbValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIXMLNode::AccessAttribString(tstring  strAttribName, BSTR * pstrValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribString(xxx_strAttribName, pstrValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIXMLNode::RemoveChild(struct IDUIXMLNode * pNode, BOOL  bDelete  )
+{
+	VARIANT_BOOL xxx_bDelete = bDelete ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_RemoveChild(pNode, xxx_bDelete  );
+}
+
+inline void IDUIXMLNode::InsertAfterChild(struct IDUIXMLNode * afterThis, struct IDUIXMLNode * addThis  )
+{
+
+	raw_InsertAfterChild(afterThis, addThis  );
+}
+
+inline void IDUIXMLNode::InsertBeforeChild(struct IDUIXMLNode * beforeThis, struct IDUIXMLNode * addThis  )
+{
+
+	raw_InsertBeforeChild(beforeThis, addThis  );
+}
+
+inline void IDUIXMLNode::InsertEndChild(struct IDUIXMLNode * pNode  )
+{
+
+	raw_InsertEndChild(pNode  );
+}
+
+inline BOOL  IDUIXMLNode::AccessAttribColor(tstring  strAttribName, OLE_COLOR * pclrValue, BOOL  bRead  )
+{
+_bstr_t xxx_strAttribName(strAttribName.c_str());
+	VARIANT_BOOL xxx_bRead = bRead ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AccessAttribColor(xxx_strAttribName, pclrValue, xxx_bRead, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIXMLNode * IDUIXMLNode::CreateNewDUIXMLNode(tstring  pstrKey  )
+{
+_bstr_t xxx_pstrKey(pstrKey.c_str());
+	struct IDUIXMLNode * _result;
+	raw_CreateNewDUIXMLNode(xxx_pstrKey, &_result);
+	return _result;
+}
+
+inline struct IDUIXMLNode * IDUIXMLNode::FirstChild()
+{
+	struct IDUIXMLNode * _result;
+	raw_FirstChild(&_result);
+	return _result;
+}
+
+inline struct IDUIXMLNode * IDUIXMLNode::NextChild()
+{
+	struct IDUIXMLNode * _result;
+	raw_NextChild(&_result);
+	return _result;
+}
+
+inline long  IDUIXMLNode::QueryIntAttribute(tstring  pStrName  )
+{
+_bstr_t xxx_pStrName(pStrName.c_str());
+	long  _result;
+	raw_QueryIntAttribute(xxx_pStrName, &_result);
+	return _result;
+}
+
+inline tstring  IDUIXMLNode::Attribute(tstring  pStrName  )
+{
+_bstr_t xxx_pStrName(pStrName.c_str());
+	BSTR _result = NULL;
+	raw_Attribute(xxx_pStrName, &_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IDUIXMLNode::SetAttribute(tstring  pStrName, tstring  pstrAttValue  )
+{
+	_bstr_t xxx_pStrName(pStrName.c_str());
+	_bstr_t xxx_pstrAttValue(pstrAttValue.c_str());
+
+	raw_SetAttribute(xxx_pStrName, xxx_pstrAttValue  );
+}
+
+inline BOOL  IDirectUI::Create(OLE_HANDLE  hWndParent, struct SkinRect  sknrc  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Create(hWndParent, sknrc, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  IDirectUI::GetWindowHandle()
+{
+	OLE_HANDLE  _result;
+	raw_GetWindowHandle(&_result);
+	return _result;
+}
+
+inline BOOL  IDirectUI::IsSupportPerPixel()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsSupportPerPixel(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetSupportPerPixel(BOOL  bSupportPerPixel  )
+{
+	VARIANT_BOOL xxx_bSupportPerPixel = bSupportPerPixel ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetSupportPerPixel(xxx_bSupportPerPixel  );
+}
+
+inline struct SkinRect  IDirectUI::GetResizeBorder()
+{
+	struct SkinRect  _result;
+	raw_GetResizeBorder(&_result);
+	return _result;
+}
+
+inline void IDirectUI::SetResizeBorder(struct SkinRect  rcBorder  )
+{
+
+	raw_SetResizeBorder(rcBorder  );
+}
+
+inline struct SkinSize  IDirectUI::GetMinSize()
+{
+	struct SkinSize  _result;
+	raw_GetMinSize(&_result);
+	return _result;
+}
+
+inline void IDirectUI::SetMinSize(struct SkinSize * psizeMin  )
+{
+
+	raw_SetMinSize(psizeMin  );
+}
+
+inline struct SkinSize  IDirectUI::GetMaxSize()
+{
+	struct SkinSize  _result;
+	raw_GetMaxSize(&_result);
+	return _result;
+}
+
+inline void IDirectUI::SetMaxSize(struct SkinSize * psizeMax  )
+{
+
+	raw_SetMaxSize(psizeMax  );
+}
+
+inline BOOL  IDirectUI::IsPopWindow()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsPopWindow(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetPopWindow(BOOL  bPopWindow  )
+{
+	VARIANT_BOOL xxx_bPopWindow = bPopWindow ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetPopWindow(xxx_bPopWindow  );
+}
+
+inline BOOL  IDirectUI::IsResizable()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsResizable(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetResizable(BOOL  bResizable  )
+{
+	VARIANT_BOOL xxx_bResizable = bResizable ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetResizable(xxx_bResizable  );
+}
+
+inline BOOL  IDirectUI::IsDragabled()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsDragabled(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetDragabled(BOOL  bDragabled  )
+{
+	VARIANT_BOOL xxx_bDragabled = bDragabled ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetDragabled(xxx_bDragabled  );
+}
+
+inline BOOL  IDirectUI::IsCanCopyRun()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsCanCopyRun(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetCanCopyRun(BOOL  bCanCopyRun  )
+{
+	VARIANT_BOOL xxx_bCanCopyRun = bCanCopyRun ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetCanCopyRun(xxx_bCanCopyRun  );
+}
+
+inline BOOL  IDirectUI::IsParentBlend()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsParentBlend(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetParentBlend(BOOL  bParentBlend  )
+{
+	VARIANT_BOOL xxx_bParentBlend = bParentBlend ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetParentBlend(xxx_bParentBlend  );
+}
+
+inline BOOL  IDirectUI::IsSetRgn()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsSetRgn(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetRgn(BOOL  bSetRgn  )
+{
+	VARIANT_BOOL xxx_bSetRgn = bSetRgn ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetRgn(xxx_bSetRgn  );
+}
+
+inline BOOL  IDirectUI::Draw(OLE_HANDLE  hDC, struct SkinRect  rect  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Draw(hDC, rect, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDirectUI::IsCaptured()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsCaptured(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetCapture(BOOL  bCaptured  )
+{
+	VARIANT_BOOL xxx_bCaptured = bCaptured ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetCapture(xxx_bCaptured  );
+}
+
+inline BOOL  IDirectUI::RegisterMessage(unsigned long  uMsg, struct ISkinObjResBase * pObject, BOOL  bChildrenNotify  )
+{
+	VARIANT_BOOL xxx_bChildrenNotify = bChildrenNotify ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RegisterMessage(uMsg, pObject, xxx_bChildrenNotify, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDirectUI::UnRegisterMessage(unsigned long  uMsg, struct ISkinObjResBase * pObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_UnRegisterMessage(uMsg, pObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::RemoveAllRegister()
+{
+
+	raw_RemoveAllRegister();
+}
+
+inline BOOL  IDirectUI::RegisterWholeMessage(struct ISkinObjResBase * pObject, BOOL  bChildrenNotify  )
+{
+	VARIANT_BOOL xxx_bChildrenNotify = bChildrenNotify ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RegisterWholeMessage(pObject, xxx_bChildrenNotify, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDirectUI::UnRegisterWholeMessage(struct ISkinObjResBase * pObject  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_UnRegisterWholeMessage(pObject, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::RemoveAllWholeMessage()
+{
+
+	raw_RemoveAllWholeMessage();
+}
+
+inline long  IDirectUI::DoWindowProc(OLE_HANDLE  hWnd, long  msg, OLE_HANDLE  wParam, OLE_HANDLE  lParam  )
+{
+	long  _result;
+	raw_DoWindowProc(hWnd, msg, wParam, lParam, &_result);
+	return _result;
+}
+
+inline long  IDirectUI::Default()
+{
+	long  _result;
+	raw_Default(&_result);
+	return _result;
+}
+
+inline void IDirectUI::SetDragFullWindow(BOOL  bDragFullWindow  )
+{
+	VARIANT_BOOL xxx_bDragFullWindow = bDragFullWindow ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetDragFullWindow(xxx_bDragFullWindow  );
+}
+
+inline void IDirectUI::SetWindowRgn()
+{
+
+	raw_SetWindowRgn();
+}
+
+inline void IDirectUI::SetMessageEntry(long * pWnd, long * pEntry  )
+{
+
+	raw_SetMessageEntry(pWnd, pEntry  );
+}
+
+inline void IDirectUI::SetUseRgnInfo(BOOL  bUseRgnInfo  )
+{
+	VARIANT_BOOL xxx_bUseRgnInfo = bUseRgnInfo ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetUseRgnInfo(xxx_bUseRgnInfo  );
+}
+
+inline BOOL  IDirectUI::IsUseRgnInfo()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsUseRgnInfo(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDirectUI::AddNCRgn(enum DUI_NCRGNTYPE  eNcRgnType, struct IDUISkinSubRgn * pSubRgn  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AddNCRgn(eNcRgnType, pSubRgn, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDirectUI::RemoveNCRgn(enum DUI_NCRGNTYPE  eNcRgnType, tstring  strName  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveNCRgn(eNcRgnType, xxx_strName, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDirectUI::RemoveAllNCRgns(enum DUI_NCRGNTYPE  eNcRgnType  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveAllNCRgns(eNcRgnType, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetEventRecieve(OLE_HANDLE  pEventBase  )
+{
+
+	raw_SetEventRecieve(pEventBase  );
+}
+
+inline OLE_HANDLE  IDirectUI::GetEventRecieve()
+{
+	OLE_HANDLE  _result;
+	raw_GetEventRecieve(&_result);
+	return _result;
+}
+
+inline void IDirectUI::DUIMessage(OLE_HANDLE  hWnd, long  nMsgID, OLE_HANDLE  wParam, OLE_HANDLE  lParam  )
+{
+
+	raw_DUIMessage(hWnd, nMsgID, wParam, lParam  );
+}
+
+inline struct ISkinObjResBase * IDirectUI::GetHotObject()
+{
+	struct ISkinObjResBase * _result;
+	raw_GetHotObject(&_result);
+	return _result;
+}
+
+inline void IDirectUI::SetDispatchMsg(long  pMsgId  )
+{
+
+	raw_SetDispatchMsg(pMsgId  );
+}
+
+inline void IDirectUI::RemoveDispatchMsg(long  pMsgId  )
+{
+
+	raw_RemoveDispatchMsg(pMsgId  );
+}
+
+inline BOOL  IDirectUI::GetIsAutoLoad()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_GetIsAutoLoad(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDirectUI::SetIsAutoLoad(BOOL  bResult  )
+{
+	VARIANT_BOOL xxx_bResult = bResult ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetIsAutoLoad(xxx_bResult  );
+}
+
+inline void IDUISkinSubRgn::SetObjPtr(OLE_HANDLE  pSkinSubRgn  )
+{
+
+	raw_SetObjPtr(pSkinSubRgn  );
+}
+
+inline OLE_HANDLE  IDUISkinSubRgn::GetObjPtr()
+{
+	OLE_HANDLE  _result;
+	raw_GetObjPtr(&_result);
+	return _result;
+}
+
+inline LONGLONG  _IDUIEventsEvents::OnLoaded(BOOL  bSuccessed  )
+{
+	VARIANT_BOOL xxx_bSuccessed = bSuccessed ? VARIANT_TRUE : VARIANT_FALSE;
+	LONGLONG  _result;
+	raw_OnLoaded(xxx_bSuccessed, &_result);
+	return _result;
+}
+
+inline LONGLONG  _IDUIEventsEvents::OnWinMsg(unsigned long  uMsgID, struct IDUIObj * pDUIObj  )
+{
+	LONGLONG  _result;
+	raw_OnWinMsg(uMsgID, pDUIObj, &_result);
+	return _result;
+}
+
+inline IDispatch * IDUIManager::GetResource()
+{
+	IDispatch * _result;
+	raw_GetResource(&_result);
+	return _result;
+}
+
+inline BOOL  IDUIManager::SetPerpixelDraw(BOOL  bPerpixel  )
+{
+	VARIANT_BOOL xxx_bPerpixel = bPerpixel ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_SetPerpixelDraw(xxx_bPerpixel, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IDUIManager::IsPerpixelDraw()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsPerpixelDraw(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIManager::SetAddRefMode(BOOL  bAddRef  )
+{
+	VARIANT_BOOL xxx_bAddRef = bAddRef ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetAddRefMode(xxx_bAddRef  );
+}
+
+inline BOOL  IDUIManager::IsAddRefMode()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsAddRefMode(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIManager::SetAutoReleaseMode(BOOL  bAutoRelease  )
+{
+	VARIANT_BOOL xxx_bAutoRelease = bAutoRelease ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetAutoReleaseMode(xxx_bAutoRelease  );
+}
+
+inline BOOL  IDUIManager::IsAutoReleaseMode()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsAutoReleaseMode(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IDUIManager::ExportSkinPoint(struct SkinPoint  sknpoint  )
+{
+
+	raw_ExportSkinPoint(sknpoint  );
+}
+
+inline long  INumberLongProp::GetValue()
+{
+	long  _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void INumberLongProp::SetValue(long  nValue  )
+{
+
+	raw_SetValue(nValue  );
+}
+
+inline void INumberLongProp::SetMinMax(long  nMin, long  nMax  )
+{
+
+	raw_SetMinMax(nMin, nMax  );
+}
+
+inline void INumberLongProp::GetMinMax(long * pnMin, long * pnMax  )
+{
+
+	raw_GetMinMax(pnMin, pnMax  );
+}
+
+inline float  INumberFloatProp::GetValue()
+{
+	float  _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void INumberFloatProp::SetValue(float  fValue  )
+{
+
+	raw_SetValue(fValue  );
+}
+
+inline BOOL  IBOOLProp::GetValue()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_GetValue(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IBOOLProp::SetValue(BOOL  bValue  )
+{
+	VARIANT_BOOL xxx_bValue = bValue ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetValue(xxx_bValue  );
+}
+
+inline tstring  IStrProp::GetValue()
+{
+	BSTR _result = NULL;
+	raw_GetValue(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IStrProp::SetValue(tstring  strValue  )
+{
+	_bstr_t xxx_strValue(strValue.c_str());
+
+	raw_SetValue(xxx_strValue  );
+}
+
+inline tstring  IStrProp::GetFullName()
+{
+	BSTR _result = NULL;
+	raw_GetFullName(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IImageSecProp::GetSize(long * pnWidth, long * pnHeight  )
+{
+
+	raw_GetSize(pnWidth, pnHeight  );
+}
+
+inline OLE_HANDLE  IImageSecProp::GetBitmap(struct SkinRect  rect  )
+{
+	OLE_HANDLE  _result;
+	raw_GetBitmap(rect, &_result);
+	return _result;
+}
+
+inline BOOL  IImageSecProp::Draw(OLE_HANDLE  hDC, struct SkinRect  rect  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Draw(hDC, rect, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIImageBase * IImageSecProp::GetValue()
+{
+	struct IDUIImageBase * _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void IImageSecProp::SetValue(struct IDUIImageBase * pValue  )
+{
+
+	raw_SetValue(pValue  );
+}
+
+inline BOOL  IImageSecProp::IsCanDraw()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsCanDraw(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct SkinRect  IImageSecProp::GetRect()
+{
+	struct SkinRect  _result;
+	raw_GetRect(&_result);
+	return _result;
+}
+
+inline short  IImageSecProp::GetWidth()
+{
+	short  _result;
+	raw_GetWidth(&_result);
+	return _result;
+}
+
+inline short  IImageSecProp::GetHeight()
+{
+	short  _result;
+	raw_GetHeight(&_result);
+	return _result;
+}
+
+inline void IImageSecProp::SetImageFunc(short  nIndex, OLE_HANDLE  hFunc  )
+{
+
+	raw_SetImageFunc(nIndex, hFunc  );
+}
+
+inline OLE_HANDLE  IImageSecProp::GetImageFunc(short * pnIndex  )
+{
+	OLE_HANDLE  _result;
+	raw_GetImageFunc(pnIndex, &_result);
+	return _result;
+}
+
+inline BOOL  IImageSecProp::IsValidateData()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsValidateData(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline long  ITextStyleProp::GetDrawFlags()
+{
+	long  _result;
+	raw_GetDrawFlags(&_result);
+	return _result;
+}
+
+inline struct DUILOGFONT  ITextStyleProp::GetLogFont()
+{
+	struct DUILOGFONT  _result;
+	raw_GetLogFont(&_result);
+	return _result;
+}
+
+inline OLE_COLOR  ITextStyleProp::GetTextColor()
+{
+	OLE_COLOR  _result;
+	raw_GetTextColor(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  ITextStyleProp::GetBitmap(struct SkinRect  rect, tstring  strText  )
+{
+_bstr_t xxx_strText(strText.c_str());
+	OLE_HANDLE  _result;
+	raw_GetBitmap(rect, xxx_strText, &_result);
+	return _result;
+}
+
+inline BOOL  ITextStyleProp::Draw(OLE_HANDLE  hDC, struct SkinRect  rect, tstring  strText  )
+{
+_bstr_t xxx_strText(strText.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Draw(hDC, rect, xxx_strText, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUITextStyle * ITextStyleProp::GetValue()
+{
+	struct IDUITextStyle * _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void ITextStyleProp::SetValue(struct IDUITextStyle * pValue  )
+{
+
+	raw_SetValue(pValue  );
+}
+
+inline BOOL  ITextStyleProp::IsValidateData()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsValidateData(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUICursor * ICursorProp::GetValue()
+{
+	struct IDUICursor * _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void ICursorProp::SetValue(struct IDUICursor * pValue  )
+{
+
+	raw_SetValue(pValue  );
+}
+
+inline void ICursorProp::SetCursor()
+{
+
+	raw_SetCursor();
+}
+
+inline BOOL  ICursorProp::IsValidateData()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsValidateData(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIFontEx * IFontProp::GetValue()
+{
+	struct IDUIFontEx * _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void IFontProp::SetValue(struct IDUIFontEx * pValue  )
+{
+
+	raw_SetValue(pValue  );
+}
+
+inline struct DUILOGFONT  IFontProp::GetLogFont()
+{
+	struct DUILOGFONT  _result;
+	raw_GetLogFont(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IFontProp::GetHFont()
+{
+	OLE_HANDLE  _result;
+	raw_GetHFont(&_result);
+	return _result;
+}
+
+inline BOOL  IFontProp::IsValidateData()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsValidateData(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_COLOR  IColorProp::GetValue()
+{
+	OLE_COLOR  _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void IColorProp::SetValue(OLE_COLOR  clrValue  )
+{
+
+	raw_SetValue(clrValue  );
+}
+
+inline BOOL  IColorProp::Draw(OLE_HANDLE  hDC, struct SkinRect  rect  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Draw(hDC, rect, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IComboProp::AddOption(tstring  strOption  )
+{
+	_bstr_t xxx_strOption(strOption.c_str());
+
+	raw_AddOption(xxx_strOption  );
+}
+
+inline void IComboProp::SetCurSel(long  nCurSel  )
+{
+
+	raw_SetCurSel(nCurSel  );
+}
+
+inline long  IComboProp::GetCurSel()
+{
+	long  _result;
+	raw_GetCurSel(&_result);
+	return _result;
+}
+
+	inline OLE_COLOR  IFillColor::get_clrStart()
+	{
+		OLE_COLOR _result;
+		HRESULT _hr = raw_get_clrStart(&_result);
+		return _result;
+	}
+
+	inline void IFillColor::put_clrStart(OLE_COLOR  pVal)
+	{
+		HRESULT _hr = raw_put_clrStart(pVal);
+	}
+
+	inline OLE_COLOR  IFillColor::get_clrEnd()
+	{
+		OLE_COLOR _result;
+		HRESULT _hr = raw_get_clrEnd(&_result);
+		return _result;
+	}
+
+	inline void IFillColor::put_clrEnd(OLE_COLOR  pVal)
+	{
+		HRESULT _hr = raw_put_clrEnd(pVal);
+	}
+
+	inline long  IFillColor::get_nGradientIrotation()
+	{
+		long _result;
+		HRESULT _hr = raw_get_nGradientIrotation(&_result);
+		return _result;
+	}
+
+	inline void IFillColor::put_nGradientIrotation(long  pVal)
+	{
+		HRESULT _hr = raw_put_nGradientIrotation(pVal);
+	}
+
+inline BOOL  IFillColor::Draw(OLE_HANDLE  hDC, struct SkinRect  rect  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Draw(hDC, rect, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline OLE_HANDLE  IFillColor::GetBitmap(struct SkinRect  rect  )
+{
+	OLE_HANDLE  _result;
+	raw_GetBitmap(rect, &_result);
+	return _result;
+}
+
+inline struct IFillColor * IFillColorProp::GetValue()
+{
+	struct IFillColor * _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void IFillColorProp::SetValue(struct IFillColor * pValue  )
+{
+
+	raw_SetValue(pValue  );
+}
+
+inline void IFillColorProp::Draw(OLE_HANDLE  hDC, struct SkinRect  rect  )
+{
+
+	raw_Draw(hDC, rect  );
+}
+
+inline void IFillColorProp::SetColorFrom(OLE_COLOR  clrFrom  )
+{
+
+	raw_SetColorFrom(clrFrom  );
+}
+
+inline OLE_COLOR  IFillColorProp::GetColorFrom()
+{
+	OLE_COLOR  _result;
+	raw_GetColorFrom(&_result);
+	return _result;
+}
+
+inline void IFillColorProp::SetColorTo(OLE_COLOR  clrTo  )
+{
+
+	raw_SetColorTo(clrTo  );
+}
+
+inline OLE_COLOR  IFillColorProp::GetColorTo()
+{
+	OLE_COLOR  _result;
+	raw_GetColorTo(&_result);
+	return _result;
+}
+
+inline void IFillColorProp::SetIrotation(long  nIrotation  )
+{
+
+	raw_SetIrotation(nIrotation  );
+}
+
+inline long  IFillColorProp::GetIrotation()
+{
+	long  _result;
+	raw_GetIrotation(&_result);
+	return _result;
+}
+
+inline OLE_HANDLE  IFillColorProp::GetBitmap(struct SkinRect  rect  )
+{
+	OLE_HANDLE  _result;
+	raw_GetBitmap(rect, &_result);
+	return _result;
+}
+
+inline BOOL  IFillColorProp::IsValidateData()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsValidateData(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline struct IDUIHotkey * IHotkeyProp::GetValue()
+{
+	struct IDUIHotkey * _result;
+	raw_GetValue(&_result);
+	return _result;
+}
+
+inline void IHotkeyProp::SetValue(struct IDUIHotkey * pValue  )
+{
+
+	raw_SetValue(pValue  );
+}
+
+inline long  IHotkeyProp::GetVirtualKeyCode()
+{
+	long  _result;
+	raw_GetVirtualKeyCode(&_result);
+	return _result;
+}
+
+inline void IHotkeyProp::SetVirtualKeyCode(long  nValue  )
+{
+
+	raw_SetVirtualKeyCode(nValue  );
+}
+
+inline long  IHotkeyProp::GetModifiers()
+{
+	long  _result;
+	raw_GetModifiers(&_result);
+	return _result;
+}
+
+inline void IHotkeyProp::SetModifiers(long  nValue  )
+{
+
+	raw_SetModifiers(nValue  );
+}
+
+inline BOOL  IDUICustom::Save(tstring  strFile  )
+{
+_bstr_t xxx_strFile(strFile.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_Save(xxx_strFile, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline tstring  IPluginProp::GetValue()
+{
+	BSTR _result = NULL;
+	raw_GetValue(&_result);
+	tstring _strResult;
+#ifdef UNICODE
+	_strResult = (LPWSTR)_result;
+#else
+	USES_CONVERSION;
+	_strResult = W2A(_result);
+#endif
+	return _strResult;
+}
+
+inline void IPluginProp::SetValue(tstring  strValue  )
+{
+	_bstr_t xxx_strValue(strValue.c_str());
+
+	raw_SetValue(xxx_strValue  );
+}
+
+inline long  IPluginProp::GetPropID()
+{
+	long  _result;
+	raw_GetPropID(&_result);
+	return _result;
+}
+
+inline void IPluginProp::SetPropID(long  nPropID  )
+{
+
+	raw_SetPropID(nPropID  );
+}
+
+	inline long  IDUISize::get_cx()
+	{
+		long _result;
+		HRESULT _hr = raw_get_cx(&_result);
+		return _result;
+	}
+
+	inline void IDUISize::put_cx(long  pVal)
+	{
+		HRESULT _hr = raw_put_cx(pVal);
+	}
+
+	inline long  IDUISize::get_cy()
+	{
+		long _result;
+		HRESULT _hr = raw_get_cy(&_result);
+		return _result;
+	}
+
+	inline void IDUISize::put_cy(long  pVal)
+	{
+		HRESULT _hr = raw_put_cy(pVal);
+	}
+
+	inline long  IDUIPoint::get_x()
+	{
+		long _result;
+		HRESULT _hr = raw_get_x(&_result);
+		return _result;
+	}
+
+	inline void IDUIPoint::put_x(long  pVal)
+	{
+		HRESULT _hr = raw_put_x(pVal);
+	}
+
+	inline long  IDUIPoint::get_y()
+	{
+		long _result;
+		HRESULT _hr = raw_get_y(&_result);
+		return _result;
+	}
+
+	inline void IDUIPoint::put_y(long  pVal)
+	{
+		HRESULT _hr = raw_put_y(pVal);
+	}
+
+	inline enum DUIMsgID  IDUIMsgNotify::get_eDuiMsgId()
+	{
+		enum DUIMsgID _result;
+		HRESULT _hr = raw_get_eDuiMsgId(&_result);
+		return _result;
+	}
+
+	inline void IDUIMsgNotify::put_eDuiMsgId(enum DUIMsgID  pVal)
+	{
+		HRESULT _hr = raw_put_eDuiMsgId(pVal);
+	}
+
+	inline long  IDUIMsgNotify::get_eWinMsgId()
+	{
+		long _result;
+		HRESULT _hr = raw_get_eWinMsgId(&_result);
+		return _result;
+	}
+
+	inline void IDUIMsgNotify::put_eWinMsgId(long  pVal)
+	{
+		HRESULT _hr = raw_put_eWinMsgId(pVal);
+	}
+
+	inline OLE_HANDLE  IDUIMsgNotify::get_lParam1()
+	{
+		OLE_HANDLE _result;
+		HRESULT _hr = raw_get_lParam1(&_result);
+		return _result;
+	}
+
+	inline void IDUIMsgNotify::put_lParam1(OLE_HANDLE  pVal)
+	{
+		HRESULT _hr = raw_put_lParam1(pVal);
+	}
+
+	inline OLE_HANDLE  IDUIMsgNotify::get_lParam2()
+	{
+		OLE_HANDLE _result;
+		HRESULT _hr = raw_get_lParam2(&_result);
+		return _result;
+	}
+
+	inline void IDUIMsgNotify::put_lParam2(OLE_HANDLE  pVal)
+	{
+		HRESULT _hr = raw_put_lParam2(pVal);
+	}
+
+	inline OLE_HANDLE  IDUIMsgNotify::get_lParam3()
+	{
+		OLE_HANDLE _result;
+		HRESULT _hr = raw_get_lParam3(&_result);
+		return _result;
+	}
+
+	inline void IDUIMsgNotify::put_lParam3(OLE_HANDLE  pVal)
+	{
+		HRESULT _hr = raw_put_lParam3(pVal);
+	}
+
+	inline OLE_HANDLE  IDUIMsgNotify::get_lParam4()
+	{
+		OLE_HANDLE _result;
+		HRESULT _hr = raw_get_lParam4(&_result);
+		return _result;
+	}
+
+	inline void IDUIMsgNotify::put_lParam4(OLE_HANDLE  pVal)
+	{
+		HRESULT _hr = raw_put_lParam4(pVal);
+	}
+
+	inline OLE_HANDLE  IDUIMsgNotify::get_lParam5()
+	{
+		OLE_HANDLE _result;
+		HRESULT _hr = raw_get_lParam5(&_result);
+		return _result;
+	}
+
+	inline void IDUIMsgNotify::put_lParam5(OLE_HANDLE  pVal)
+	{
+		HRESULT _hr = raw_put_lParam5(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIMsgNotify::get_bChildren()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bChildren(&_result);
+		return _result;
+	}
+
+	inline void IDUIMsgNotify::put_bChildren(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bChildren(pVal);
+	}
+
+	inline long  IDUIFont::get_lfHeight()
+	{
+		long _result;
+		HRESULT _hr = raw_get_lfHeight(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfHeight(long  pVal)
+	{
+		HRESULT _hr = raw_put_lfHeight(pVal);
+	}
+
+	inline long  IDUIFont::get_lfWidth()
+	{
+		long _result;
+		HRESULT _hr = raw_get_lfWidth(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfWidth(long  pVal)
+	{
+		HRESULT _hr = raw_put_lfWidth(pVal);
+	}
+
+	inline long  IDUIFont::get_lfEscapement()
+	{
+		long _result;
+		HRESULT _hr = raw_get_lfEscapement(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfEscapement(long  pVal)
+	{
+		HRESULT _hr = raw_put_lfEscapement(pVal);
+	}
+
+	inline long  IDUIFont::get_lfOrientation()
+	{
+		long _result;
+		HRESULT _hr = raw_get_lfOrientation(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfOrientation(long  pVal)
+	{
+		HRESULT _hr = raw_put_lfOrientation(pVal);
+	}
+
+	inline long  IDUIFont::get_lfWeight()
+	{
+		long _result;
+		HRESULT _hr = raw_get_lfWeight(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfWeight(long  pVal)
+	{
+		HRESULT _hr = raw_put_lfWeight(pVal);
+	}
+
+	inline short  IDUIFont::get_lfItalic()
+	{
+		short _result;
+		HRESULT _hr = raw_get_lfItalic(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfItalic(short  pVal)
+	{
+		HRESULT _hr = raw_put_lfItalic(pVal);
+	}
+
+	inline short  IDUIFont::get_lfUnderline()
+	{
+		short _result;
+		HRESULT _hr = raw_get_lfUnderline(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfUnderline(short  pVal)
+	{
+		HRESULT _hr = raw_put_lfUnderline(pVal);
+	}
+
+	inline short  IDUIFont::get_lfStrikeOut()
+	{
+		short _result;
+		HRESULT _hr = raw_get_lfStrikeOut(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfStrikeOut(short  pVal)
+	{
+		HRESULT _hr = raw_put_lfStrikeOut(pVal);
+	}
+
+	inline short  IDUIFont::get_lfCharSet()
+	{
+		short _result;
+		HRESULT _hr = raw_get_lfCharSet(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfCharSet(short  pVal)
+	{
+		HRESULT _hr = raw_put_lfCharSet(pVal);
+	}
+
+	inline short  IDUIFont::get_lfOutPrecision()
+	{
+		short _result;
+		HRESULT _hr = raw_get_lfOutPrecision(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfOutPrecision(short  pVal)
+	{
+		HRESULT _hr = raw_put_lfOutPrecision(pVal);
+	}
+
+	inline short  IDUIFont::get_lfClipPrecision()
+	{
+		short _result;
+		HRESULT _hr = raw_get_lfClipPrecision(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfClipPrecision(short  pVal)
+	{
+		HRESULT _hr = raw_put_lfClipPrecision(pVal);
+	}
+
+	inline short  IDUIFont::get_lfQuality()
+	{
+		short _result;
+		HRESULT _hr = raw_get_lfQuality(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfQuality(short  pVal)
+	{
+		HRESULT _hr = raw_put_lfQuality(pVal);
+	}
+
+	inline short  IDUIFont::get_lfPitchAndFamily()
+	{
+		short _result;
+		HRESULT _hr = raw_get_lfPitchAndFamily(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfPitchAndFamily(short  pVal)
+	{
+		HRESULT _hr = raw_put_lfPitchAndFamily(pVal);
+	}
+
+	inline BSTR  IDUIFont::get_lfFaceName()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_lfFaceName(&_result);
+		return _result;
+	}
+
+	inline void IDUIFont::put_lfFaceName(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_lfFaceName(pVal);
+	}
+
+	inline BSTR  IDUIImageSection::get_strImageName()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strImageName(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_strImageName(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strImageName(pVal);
+	}
+
+	inline struct IDUIRect * IDUIImageSection::get_rect()
+	{
+		struct IDUIRect *_result;
+		HRESULT _hr = raw_get_rect(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_rect(struct IDUIRect * pVal)
+	{
+		HRESULT _hr = raw_put_rect(pVal);
+	}
+
+	inline struct IDUIRect * IDUIImageSection::get_rcBorder()
+	{
+		struct IDUIRect *_result;
+		HRESULT _hr = raw_get_rcBorder(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_rcBorder(struct IDUIRect * pVal)
+	{
+		HRESULT _hr = raw_put_rcBorder(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageSection::get_leftEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_leftEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_leftEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_leftEdgeStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageSection::get_rightEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_rightEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_rightEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_rightEdgeStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageSection::get_topEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_topEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_topEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_topEdgeStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageSection::get_bottomEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bottomEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_bottomEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bottomEdgeStretch(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageSection::get_clientEdgeStretch()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_clientEdgeStretch(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_clientEdgeStretch(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_clientEdgeStretch(pVal);
+	}
+
+inline void IDUIImageSection::StretchAll()
+{
+
+	raw_StretchAll();
+}
+
+inline void IDUIImageSection::TileAll()
+{
+
+	raw_TileAll();
+}
+
+	inline OLE_COLOR  IDUIImageSection::get_clrTrans()
+	{
+		OLE_COLOR _result;
+		HRESULT _hr = raw_get_clrTrans(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_clrTrans(OLE_COLOR  pVal)
+	{
+		HRESULT _hr = raw_put_clrTrans(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageSection::get_bTrans()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bTrans(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_bTrans(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bTrans(pVal);
+	}
+
+	inline short  IDUIImageSection::get_nOpacity()
+	{
+		short _result;
+		HRESULT _hr = raw_get_nOpacity(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_nOpacity(short  pVal)
+	{
+		HRESULT _hr = raw_put_nOpacity(pVal);
+	}
+
+	inline OLE_COLOR  IDUIImageSection::get_clrColorize()
+	{
+		OLE_COLOR _result;
+		HRESULT _hr = raw_get_clrColorize(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_clrColorize(OLE_COLOR  pVal)
+	{
+		HRESULT _hr = raw_put_clrColorize(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageSection::get_bSupportPerPixel()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bSupportPerPixel(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_bSupportPerPixel(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bSupportPerPixel(pVal);
+	}
+
+	inline VARIANT_BOOL  IDUIImageSection::get_bDestroyImage()
+	{
+		VARIANT_BOOL _result;
+		HRESULT _hr = raw_get_bDestroyImage(&_result);
+		return _result;
+	}
+
+	inline void IDUIImageSection::put_bDestroyImage(VARIANT_BOOL  pVal)
+	{
+		HRESULT _hr = raw_put_bDestroyImage(pVal);
+	}
+
+	inline BSTR  IDUISkinInfo::get_strAuthorName()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strAuthorName(&_result);
+		return _result;
+	}
+
+	inline void IDUISkinInfo::put_strAuthorName(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strAuthorName(pVal);
+	}
+
+	inline BSTR  IDUISkinInfo::get_strCompany()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strCompany(&_result);
+		return _result;
+	}
+
+	inline void IDUISkinInfo::put_strCompany(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strCompany(pVal);
+	}
+
+	inline BSTR  IDUISkinInfo::get_strUrl()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strUrl(&_result);
+		return _result;
+	}
+
+	inline void IDUISkinInfo::put_strUrl(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strUrl(pVal);
+	}
+
+	inline BSTR  IDUISkinInfo::get_strVersion()
+	{
+		BSTR _result;
+		HRESULT _hr = raw_get_strVersion(&_result);
+		return _result;
+	}
+
+	inline void IDUISkinInfo::put_strVersion(BSTR  pVal)
+	{
+		HRESULT _hr = raw_put_strVersion(pVal);
+	}
+
+inline struct IDUISkinSubRgn * IDUISkinRgn::AddSubRgn(tstring  strName  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	struct IDUISkinSubRgn * _result;
+	raw_AddSubRgn(xxx_strName, &_result);
+	return _result;
+}
+
+inline struct IDUISkinSubRgn * IDUISkinRgn::GetSubRgn(tstring  strName  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	struct IDUISkinSubRgn * _result;
+	raw_GetSubRgn(xxx_strName, &_result);
+	return _result;
+}
+
+inline BOOL  IDUISkinRgn::RemoveSubRgn(tstring  strName  )
+{
+_bstr_t xxx_strName(strName.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveSubRgn(xxx_strName, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline short  IDUISkinRgn::GetSubRgnCount()
+{
+	short  _result;
+	raw_GetSubRgnCount(&_result);
+	return _result;
+}
+
+inline long  IScriptUtils::LoWord(long  nValue  )
+{
+	long  _result;
+	raw_LoWord(nValue, &_result);
+	return _result;
+}
+
+inline long  IScriptUtils::HiWord(long  nValue  )
+{
+	long  _result;
+	raw_HiWord(nValue, &_result);
+	return _result;
+}
+
+inline BOOL  IScriptUtils::AddEvent(tstring  strGuid, long  nMsgID, tstring  strEventFuncName, BOOL  bHasParam  )
+{
+_bstr_t xxx_strGuid(strGuid.c_str());
+_bstr_t xxx_strEventFuncName(strEventFuncName.c_str());
+	VARIANT_BOOL xxx_bHasParam = bHasParam ? VARIANT_TRUE : VARIANT_FALSE;
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_AddEvent(xxx_strGuid, nMsgID, xxx_strEventFuncName, xxx_bHasParam, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IScriptUtils::RemoveEvent(tstring  strGuid, long  nMsgID  )
+{
+_bstr_t xxx_strGuid(strGuid.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_RemoveEvent(xxx_strGuid, nMsgID, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline void IScriptUtils::SetTemp(BOOL  bTemp  )
+{
+	VARIANT_BOOL xxx_bTemp = bTemp ? VARIANT_TRUE : VARIANT_FALSE;
+
+	raw_SetTemp(xxx_bTemp  );
+}
+
+inline BOOL  IScriptUtils::IsTemp()
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_IsTemp(&_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IScriptUtils::CallEventAll(OLE_HANDLE  hScriptObject, long  nMsgID, OLE_HANDLE  wParam, OLE_HANDLE  lParam, long  nDUIMsgId  )
+{
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CallEventAll(hScriptObject, nMsgID, wParam, lParam, nDUIMsgId, &_result);
+	return _result ? TRUE : FALSE;
+}
+
+inline BOOL  IScriptUtils::CallEventSingle(OLE_HANDLE  hScriptObject, tstring  strGuid, long  nMsgID, OLE_HANDLE  wParam, OLE_HANDLE  lParam, long  nDUIMsgId  )
+{
+_bstr_t xxx_strGuid(strGuid.c_str());
+	VARIANT_BOOL _result = VARIANT_FALSE;
+	raw_CallEventSingle(hScriptObject, xxx_strGuid, nMsgID, wParam, lParam, nDUIMsgId, &_result);
+	return _result ? TRUE : FALSE;
+}
+

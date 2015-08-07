@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VPBNClientUI", "VPBNClientUI\VPBNClientUI.vcproj", "{E49A4F8C-735A-44EE-BDDD-46C4422727B5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VPBNClientLogic", "VPBNClientLogic\VPBNClientLogic.vcproj", "{340F147E-0D55-4A9B-B6D4-92D66C040CB9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Function_Test", "..\Function_Test\Function_Test\Function_Test.vcproj", "{AEA46981-CFB1-4B9E-A9FD-852DC48B2300}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E49A4F8C-735A-44EE-BDDD-46C4422727B5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E49A4F8C-735A-44EE-BDDD-46C4422727B5}.Debug|Win32.Build.0 = Debug|Win32
+		{E49A4F8C-735A-44EE-BDDD-46C4422727B5}.Release|Win32.ActiveCfg = Release|Win32
+		{E49A4F8C-735A-44EE-BDDD-46C4422727B5}.Release|Win32.Build.0 = Release|Win32
+		{340F147E-0D55-4A9B-B6D4-92D66C040CB9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{340F147E-0D55-4A9B-B6D4-92D66C040CB9}.Debug|Win32.Build.0 = Debug|Win32
+		{340F147E-0D55-4A9B-B6D4-92D66C040CB9}.Release|Win32.ActiveCfg = Release|Win32
+		{340F147E-0D55-4A9B-B6D4-92D66C040CB9}.Release|Win32.Build.0 = Release|Win32
+		{AEA46981-CFB1-4B9E-A9FD-852DC48B2300}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AEA46981-CFB1-4B9E-A9FD-852DC48B2300}.Debug|Win32.Build.0 = Debug|Win32
+		{AEA46981-CFB1-4B9E-A9FD-852DC48B2300}.Release|Win32.ActiveCfg = Release|Win32
+		{AEA46981-CFB1-4B9E-A9FD-852DC48B2300}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
